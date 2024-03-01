@@ -1,31 +1,33 @@
 import {Component, For } from "solid-js"
+import Data from '../../data/Data'
 
 const Nav:Component = () => {
-	const Links = [
-		{
-			id:1,
-			title: 'Home',
-			link: '/',
-		},
-		{
-			id:2,
-			title: 'Shops',
-			link: '/shops',
-		}
-	];
 
 	return (
-		<nav class="w-full py-2">
-			<div class="w-10/12 m-auto">
-				Navigation
+		<nav class="w-full py-2 sticky top-0">
+			<div class="w-10/12 m-auto flex justify-between">
+				<div>
+					<a href="/">
+						Logo
+					</a>
+				</div>
 
-				<ul>
-					<For each={Links}>{(l) => (
+				<ul class="hidden md:flex gap-10">
+					<For each={Data}>{(l) => (
 						<a href={l.link}>
 							<li>{l.title}</li>
 						</a>
 					)}</For>
 				</ul>
+
+				<div class="flex gap-5">
+					<button>
+						Login
+					</button>
+					<button>
+						Register
+					</button>
+				</div>
 			</div>
 		</nav>
 	)

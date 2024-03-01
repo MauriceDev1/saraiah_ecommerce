@@ -1,14 +1,17 @@
-import { createSignal } from 'solid-js'
 import Nav from './components/navigation/Nav'
 import Footer from './components/navigation/Footer'
 
-function App() {
+
+const App = ({children}: any) => {
 
   return (
-    <>
+    <main>
       <Nav/>
+	<div class="min-h-screen">
+	    {children}
+	</div>
       <Footer />
-    </>
+    </main>
   )
 }
 
