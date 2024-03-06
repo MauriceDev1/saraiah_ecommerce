@@ -23,9 +23,6 @@ const Footer:Component = () => {
 							Lookbook
 						</li>
 						<li>
-							Our Story
-						</li>
-						<li>
 							Contact
 						</li>
 					</ul>
