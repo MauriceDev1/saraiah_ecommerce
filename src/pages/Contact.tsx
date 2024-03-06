@@ -1,10 +1,10 @@
 import { Component } from 'solid-js'
-import Hero from '../components/general/Hero';
+import ShopHero from '../components/general/ShopHero';
 
 const Contact:Component = () => {
 	return (
 		<>
-			{/* <Hero /> */}
+			<ShopHero />	
 			Contact
 		</>
 	)

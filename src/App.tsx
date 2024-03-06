@@ -1,7 +1,6 @@
 import Nav from './components/navigation/Nav'
 import Footer from './components/navigation/Footer'
 
-
 const App = ({children}: any) => {
 
   return (
