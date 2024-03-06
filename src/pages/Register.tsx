@@ -2,8 +2,9 @@ import { Component } from "solid-js";
 
 const Register:Component = () => {
     return (
-        <div>
-            Register
+        <div class="w-full flex h-screen">
+            <div class="w-1/2 h-full bg-green-100"></div>
+            <div></div>
         </div>
     )
 }
