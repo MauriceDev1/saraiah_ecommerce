@@ -7,10 +7,13 @@ const App = ({children}: any) => {
   return (
     <main>
       <Nav/>
-	<div class="min-h-screen">
-	    {children}
-	</div>
+      <div class="min-h-screen">
+          {children}
+      </div>
       <Footer />
+      <div class='w-full bg-black h-screen fixed z-50'>
+      test
+      </div>
     </main>
   )
 }

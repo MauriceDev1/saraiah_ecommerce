@@ -4,7 +4,7 @@ import Hero from '../components/general/Hero'
 const Categories:Component = () => {
 	return (
 		<>
-			<Hero />
+			{/* <Hero /> */}
 			Categories
 		</>
 	)
