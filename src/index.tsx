@@ -8,9 +8,11 @@ import Shops from './pages/Shops'
 import NotFound from './pages/Notfound'
 import Categories from './pages/Categories'
 import Contact from './pages/Contact'
+import Login from './pages/Login'
 
 import './index.css'
 import App from './App'
+import Register from './pages/Register'
 
 
 const root = document.getElementById('root')
@@ -21,6 +23,8 @@ render(() => (
 		<Route path="/shops" component={Shops} />
 		<Route path="/categories" component={Categories} />
 		<Route path="/contact" component={Contact} />
+		<Route path="/login" component={Login} />
+		<Route path="/register" component={Register} />
 		<Route path="*" component={NotFound} />
 	</Router>
 ), root!)

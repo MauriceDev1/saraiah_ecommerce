@@ -15,7 +15,7 @@ export default {
       },
       colors: {
         customColor: '#F2EDE6',
-        customColor2: '#822D12',
+        customColor2: '#0e0502',
       },
     },
   },

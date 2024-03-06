@@ -1,15 +1,31 @@
 import Nav from './components/navigation/Nav'
 import Footer from './components/navigation/Footer'
+import { useLocation } from '@solidjs/router'
 
 const App = ({children}: any) => {
+  const location = useLocation();
 
   return (
     <main>
-      <Nav/>
+      {
+        location.pathname === '/login' || 
+        location.pathname === '/register' 
+          ? 
+            null 
+          : 
+            <Nav/> 
+      }
       <div class="min-h-screen">
           {children}
       </div>
-      <Footer />
+      {
+        location.pathname === '/login' || 
+        location.pathname === '/register'  
+          ? 
+            null 
+          : 
+            <Footer />
+      }
       <div class='w-full bg-black h-screen fixed z-50'>
       test
       </div>

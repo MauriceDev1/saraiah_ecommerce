@@ -16,8 +16,8 @@ const Data = [
 	},
 	{
 		id:3,
-		title: 'More',
-		link: '/more',
+		title: 'Contact',
+		link: '/contact',
 	},
 ];
 
