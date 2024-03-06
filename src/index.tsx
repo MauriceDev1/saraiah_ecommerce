@@ -7,10 +7,10 @@ import Home from './pages/Home'
 import Shops from './pages/Shops'
 import NotFound from './pages/Notfound'
 import Categories from './pages/Categories'
+import Contact from './pages/Contact'
 
 import './index.css'
 import App from './App'
-import Contact from './pages/Contact'
 
 
 const root = document.getElementById('root')
