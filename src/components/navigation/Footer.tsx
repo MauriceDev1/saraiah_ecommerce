@@ -1,3 +1,4 @@
+import { RiLogosFacebookCircleLine, RiLogosInstagramLine, RiLogosPinterestLine } from "solid-icons/ri";
 import { Component } from "solid-js";
 
 const Footer:Component = () => {
@@ -7,49 +8,65 @@ const Footer:Component = () => {
 				<div class="w-1/4">
 					<ul>
 						<li>
-							Home
+							<a href="/">
+								Home
+							</a>
 						</li>
 						<li>
-							Shop
+							<a href="/shops">
+								Shops
+							</a>
 						</li>
 						<li>
-							Blog
-						</li>
-					</ul>
-				</div>
-				<div class="w-1/4">
-					<ul>
-						<li>
-							Lookbook
-						</li>
-						<li>
-							Contact
+							<a href="/blog">
+								Blog
+							</a>
 						</li>
 					</ul>
 				</div>
 				<div class="w-1/4">
 					<ul>
 						<li>
-							Store Policy
+							<a href="/lookbook">
+								Lookbook
+							</a>
 						</li>
 						<li>
-							Shipping & Returns
-						</li>
-						<li>
-							FAQ
+							<a href="/contact">
+								Contact
+							</a>
 						</li>
 					</ul>
 				</div>
 				<div class="w-1/4">
 					<ul>
 						<li>
-							Facebook
+							<a href="/store_policy">
+								Store Policy
+							</a>
 						</li>
 						<li>
-							Instagram
+							<a href="/shipping_returns">
+								Shipping & Returns
+							</a>
 						</li>
 						<li>
-							Pintrest
+							<a href="/faq">
+								FAQ
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="w-1/4">
+					<ul class="flex gap-5">
+						<li>
+							<RiLogosFacebookCircleLine class="text-2xl"/>
+						</li>
+						<li>
+							<RiLogosInstagramLine class="text-2xl"/>
+						</li>
+						<li>
+							<RiLogosPinterestLine class="text-2xl"/>
 						</li>
 					</ul>
 				</div>
