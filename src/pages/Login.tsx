@@ -36,7 +36,7 @@ const Login:Component = () => {
 
     return (
         <div class="w-full flex h-screen">
-            <div class="w-1/2 h-full bg-green-100" style={{"background-image":`url(${Woman})`,"background-size":"cover"}}></div>
+            <div class="hidden md:flex w-1/2 h-full bg-green-100" style={{"background-image":`url(${Woman})`,"background-size":"cover"}}></div>
             <div class="w-full md:w-1/2 h-full flex">
                 <div class="w-10/12 max-w-[450px] m-auto gap-3 flex-col">
                     <h1 class="text-2xl text-center">

@@ -21,7 +21,7 @@ const Nav: Component = () => {
 	 		
 			<div class="lg:-ml-52">
           		<a href="/">
-					<img src={Logo} alt="Mez haul logo" class="h-14"/>
+					<img src={Logo} alt="Mez haul logo" class="h-14 mt-1"/>
           		</a>
         	</div>
 
