@@ -1,11 +1,16 @@
 import { RiLogosFacebookCircleLine, RiLogosInstagramLine, RiLogosPinterestLine } from "solid-icons/ri";
 import { Component } from "solid-js";
+import Logo from "../../assets/images/IMG_2282-removebg-preview.png"
 
 const Footer:Component = () => {
 	return (
 		<footer class="w-full bg-customColor py-16">
-			<div class="w-9/12 m-auto flex flex-wrap">
-				<div class="w-1/4">
+			<div class="w-8/12 m-auto flex flex-wrap">
+				<div class="w-1/5">
+					<img src={Logo} alt="" class="w-28" />
+				</div>
+				<div class="w-1/5">
+					<h3 class="font-bold pb-3">Site</h3>
 					<ul>
 						<li>
 							<a href="/">
@@ -18,15 +23,6 @@ const Footer:Component = () => {
 							</a>
 						</li>
 						<li>
-							<a href="/blog">
-								Blog
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="w-1/4">
-					<ul>
-						<li>
 							<a href="/lookbook">
 								Lookbook
 							</a>
@@ -38,7 +34,18 @@ const Footer:Component = () => {
 						</li>
 					</ul>
 				</div>
-				<div class="w-1/4">
+				<div class="w-1/5">
+					<h3 class="font-bold pb-3">More</h3>
+					<ul>
+						<li>
+							<a href="/blog">
+								Blog
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="w-1/5">
+					<h3 class="font-bold pb-3">Policies</h3>
 					<ul>
 						<li>
 							<a href="/store_policy">
@@ -57,8 +64,9 @@ const Footer:Component = () => {
 						</li>
 					</ul>
 				</div>
-				<div class="w-1/4">
-					<ul class="flex gap-5">
+				<div class="w-1/5">
+					<h3 class="font-bold pb-3">Social Media</h3>
+					<ul class="flex gap-8">
 						<li>
 							<RiLogosFacebookCircleLine class="text-2xl"/>
 						</li>

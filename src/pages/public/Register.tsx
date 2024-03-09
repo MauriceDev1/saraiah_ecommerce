@@ -1,7 +1,14 @@
 import { Component, createSignal } from "solid-js";
-import Woman from '../assets/images/man-7428290_1280.jpg'
+import Woman from '../../assets/images/man-7428290_1280.jpg'
+import { useAuthContext } from "../../context/AuthContext";
+import cookie from "cookiejs";
+import useRegister from "../../hooks/userRegister";
+import { useNavigate } from "@solidjs/router";
 
 const Register:Component = () => {
+    const navigate = useNavigate();
+    const [loading,setLoading] = createSignal(false);
+    const { registerUser } = useRegister();
     const [data, setData] = createSignal({
         name: '',
         email: '',
@@ -14,6 +21,11 @@ const Register:Component = () => {
         password: '',
         repassword: ''
     });
+    const {
+        setIsAuth,
+        setUserId,
+        setUserEmail,
+    } = useAuthContext();
     
     const enterData = (e:any) => {
         const {name, value} = e.target;
@@ -25,33 +37,67 @@ const Register:Component = () => {
         setDataError((prv) => ({...prv,[name]:''}));
     }
 
-    const onSubmit = () => {
-        if(data().name === '' || data().email === '' || data().password === '' || data().repassword === '' || dataError().password !== dataError().repassword){
-            if(data().name === '') {
+    const onSubmit = async () => {
+        const {
+            name,
+            email,
+            password,
+            repassword
+        } = data();
+        if(
+            name === '' || 
+            email === '' || 
+            password === '' || 
+            repassword === '' || 
+            password !== 
+            repassword
+        ){
+            if(name === '') {
                 setDataError((prv) => ({...prv,'name': 'Name is a required fiels!'}))
             }
-            if(data().email === '') {
+            if(email === '') {
                 setDataError((prv) => ({...prv,'email': 'Email is a required fiels!'}))
             }
-            if(data().password === '') {
+            if(password === '') {
                 setDataError((prv) => ({...prv,'password': 'Password is a required field!'}))
             }
-            if(data().repassword === '') {
+            if(repassword === '') {
                 setDataError((prv) => ({...prv,'repassword': 'Confirm password is a required field!'}))
             }
-            if(data().repassword !== data().password){
+            if(repassword !== password){
                 setDataError((prv) => ({...prv,'repassword': 'Passwords do not match'}))
             }
             return
         }
-        console.log(data());
+        try {
+            setLoading(true);
+            const data = {
+                name,
+                email,
+                password,
+            }
+            const result = await registerUser(data);
+            if(result.uid){
+                cookie.set('auth', 'true' ,2);
+                cookie.set('userId', result.uid ,2);
+                setIsAuth(true);
+                setUserId(result.uid);
+                setUserEmail(data.email);
+                setLoading(false);
+                navigate('/personal_details')
+            }
+        } catch (error) {
+            alert('Email name already exists')
+            console.log(error);
+        }
+        setLoading(false)
     }
 
     return (
         <div class="w-full flex h-screen">
             <div class="hidden md:flex w-1/2 h-full bg-green-100" style={{"background-image":`url(${Woman})`,"background-size":"cover"}}></div>
             <div class="w-full md:w-1/2 h-full flex">
-                <div class="w-10/12 max-w-[450px] m-auto gap-3 flex-col">
+                <div class="w-10/12 max-w-[450px] text-lg m-auto gap-3 flex-col">
                     <h1 class="text-2xl text-center">
                         Register
                     </h1>
@@ -66,7 +112,7 @@ const Register:Component = () => {
                         placeholder={dataError().name ? dataError().name : 'Name'}
                         onInput={enterData}
                         onChange={errorHandling}
-                        class="w-full border h-10 rounded border-gray-300 px-2" 
+                        class="w-full border h-12 rounded border-gray-300 px-2" 
                     />
                     <div class="py-3">
                         <label>
@@ -79,7 +125,7 @@ const Register:Component = () => {
                         placeholder={dataError().email ? dataError().email : 'Email'}
                         onInput={enterData}
                         onChange={errorHandling}
-                        class="w-full border h-10 rounded border-gray-300 px-2" 
+                        class="w-full border h-12 rounded border-gray-300 px-2" 
                     />
                     <div class="py-3">
                         <label>
@@ -92,7 +138,7 @@ const Register:Component = () => {
                         placeholder={dataError().password ? dataError().password : 'Password'}
                         onInput={enterData}
                         onChange={errorHandling}
-                        class="w-full border h-10 rounded border-gray-300 px-2" 
+                        class="w-full border h-12 rounded border-gray-300 px-2" 
                     />
                     <div class="py-3">
                         <label>
@@ -105,9 +151,9 @@ const Register:Component = () => {
                         placeholder={dataError().repassword ? dataError().repassword : 'Confirm password'}
                         onInput={enterData}
                         onChange={errorHandling}
-                        class="w-full border h-10 rounded border-gray-300 px-2" 
+                        class="w-full border h-12 rounded border-gray-300 px-2" 
                     />
-                    <button onClick={onSubmit} class="w-full my-5 bg-blue-500 text-white h-10 rounded">Register</button>
+                    <button onClick={onSubmit} class="w-full my-5 bg-black text-white h-12 rounded">{loading() ? <div class="loader m-auto "></div> : 'Register'}</button>
                     <div class="flex justify-between">
                         <p>
                             Already register 
