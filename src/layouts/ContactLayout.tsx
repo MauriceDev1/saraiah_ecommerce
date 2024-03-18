@@ -3,12 +3,9 @@ import { Component } from "solid-js";
 const ContactLayout:Component = () => {
     return (
         <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
-            <div class="w-1/2">
-
-            </div>
-            <div class="w-1/2">
+            <div class="w-1/2 m-auto">
                 <h1 class="text-3xl pb-5">Contact Form</h1>
-                <div class="text-lg flex flex-col gap-3">
+                <div class="text-md flex flex-col gap-3">
                     <div class="flex gap-3">
                         <div class="w-1/2">
                             <label>
@@ -18,7 +15,7 @@ const ContactLayout:Component = () => {
                                 type="text" 
                                 name="name"
                                 placeholder="Name"
-                                class="w-full h-12 border mt-2 border-gray-400 px-2"
+                                class="w-full h-10 border mt-2 border-gray-400 px-2"
                             />
                         </div>
                         <div class="w-1/2">
@@ -29,7 +26,7 @@ const ContactLayout:Component = () => {
                                 type="text" 
                                 name="surname"
                                 placeholder="Surname"
-                                class="w-full h-12 border mt-2 border-gray-400 px-2"
+                                class="w-full h-10 border mt-2 border-gray-400 px-2"
                             />
                         </div>
                     </div>
@@ -42,7 +39,7 @@ const ContactLayout:Component = () => {
                                 type="email" 
                                 name="email"
                                 placeholder="Email"
-                                class="w-full h-12 border mt-2 border-gray-400 px-2"
+                                class="w-full h-10 border mt-2 border-gray-400 px-2"
                             />
                         </div>
                         <div class="w-1/2">
@@ -53,7 +50,7 @@ const ContactLayout:Component = () => {
                                 type="tel" 
                                 name="mobile"
                                 placeholder="Mobile"
-                                class="w-full h-12 border mt-2 border-gray-400 px-2"
+                                class="w-full h-10 border mt-2 border-gray-400 px-2"
                             />
                         </div>
                     </div>
@@ -62,7 +59,7 @@ const ContactLayout:Component = () => {
                             Subject
                         </label>
                         <select
-                            class="w-full border mt-2 border-gray-400 bg-white h-12 px-2"
+                            class="w-full border mt-2 border-gray-400 bg-white h-10 px-2"
                         >
                             <option value="select">Select</option>
                         </select>
@@ -79,7 +76,7 @@ const ContactLayout:Component = () => {
                         >
                         </textarea>
                     </div>
-                    <button class="bg-black text-white w-full h-12">
+                    <button class="bg-black text-white w-full h-10">
                         Submit
                     </button>
                 </div>

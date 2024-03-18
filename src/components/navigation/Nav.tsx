@@ -23,7 +23,7 @@ const Nav: Component = () => {
 
   return (
     <nav class="w-full md:pt-10 fixed z-50">
-      <div class="w-full text-lg md:w-11/12 m-auto relative flex bg-opacity-90 rounded-sm justify-between bg-customColor h-16 items-center px-5 shadow">
+      <div class="w-full text-md md:w-11/12 m-auto relative flex bg-opacity-90 rounded-sm justify-between bg-customColor h-14 items-center px-5">
         	 
 			<ul class="lg:flex gap-10 hidden z-50">
           		<For each={Data}>{(l) => (
@@ -34,7 +34,7 @@ const Nav: Component = () => {
         	</ul>
 	 		
 			<div class="w-full absolute h-full flex justify-center left-0 top-0">
-				<div class="h-20 w-20 bg-white flex rounded-full justify-center -mt-2">
+				<div class="flex rounded-full justify-center -mt-3">
 					<a href="/">
 						<img src={Logo} alt="Mez haul logo" class="h-14 mt-4"/>
 					</a>
@@ -42,12 +42,12 @@ const Nav: Component = () => {
         	</div>
 
         	<div class="flex gap-6 items-center z-50">
-				<HiOutlineBell class="text-3xl" />
-				<IoCartOutline class="text-3xl" />
+				<HiOutlineBell class="text-2xl" />
+				<IoCartOutline class="text-2xl" />
 				{isAuth() 
 					?
 						<>
-							<div class="h-10 w-10 relative flex bg-black text-white rounded-full">
+							<div class="h-8 w-8 relative flex bg-black text-white rounded-full">
 								<button 
 									class="m-auto" 
 									onClick={toggleProfileMenu}
@@ -68,15 +68,12 @@ const Nav: Component = () => {
 										<a href="/notification">
 											<li>Notification</li>
 										</a>
-										<a href="/account">
-											<li>Account</li>
-										</a>
 									</ul>
 								</div>
 							</div>
 							<button 
 								onClick={handleLogout}
-								class="bg-black text-white h-9 px-6 rounded-sm"
+								class="bg-black text-white h-8 px-6 rounded-sm text-sm"
 							>
 								Logout
 							</button>

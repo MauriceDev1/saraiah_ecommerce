@@ -11,8 +11,8 @@ const Data = [
 	},
 	{
 		id:2,
-		title: 'Influencers Lookbook',
-		link: '/categories',
+		title: 'Influencers',
+		link: '/influencer',
 	},
 	{
 		id:3,

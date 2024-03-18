@@ -3,9 +3,7 @@ import ContactLayout from '../../layouts/ContactLayout';
 
 const Contact:Component = () => {
 	return (
-		<>	
-			<ContactLayout />
-		</>
+		<ContactLayout />
 	)
 }
 
