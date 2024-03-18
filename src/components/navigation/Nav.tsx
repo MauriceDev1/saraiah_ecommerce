@@ -42,8 +42,12 @@ const Nav: Component = () => {
         	</div>
 
         	<div class="flex gap-6 items-center z-50">
-				<HiOutlineBell class="text-2xl" />
-				<IoCartOutline class="text-2xl" />
+				<button onClick={() => navigate('/notification')}>
+					<HiOutlineBell class="text-2xl" />
+				</button>
+				<button onClick={() => navigate('/cart')}>
+					<IoCartOutline class="text-2xl" />
+				</button>
 				{isAuth() 
 					?
 						<>

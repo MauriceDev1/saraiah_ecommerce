@@ -7,7 +7,7 @@ const AdminLayout:Component = ({children}: any) => {
             <div class="w-[330px] border h-[80vh] bg-customColor">
                 <AdminNav />
             </div>
-            <div class="w-full border h-[80vh] bg-customColor">
+            <div class="w-full border h-[80vh] bg-customColor p-5">
                 {children}
             </div>
         </div>

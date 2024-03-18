@@ -23,7 +23,7 @@ const App = ({children}: any) => {
         location.pathname === '/register' ||
         location.pathname === '/profile' ||
         location.pathname === '/orders' ||
-        location.pathname === '/account' ||
+        location.pathname === '/address' ||
         location.pathname === '/notification' ||
         location.pathname === '/favourite'
           ? 

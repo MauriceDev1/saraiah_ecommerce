@@ -5,7 +5,9 @@ const AdminNav:Component = () => {
     return (
         <ul>
             <For each={Links}>{
-                (l) => <a><li>{l.title}</li></a>
+                (l) => <a href={l.link}>
+                        <li class="py-2 border px-5">{l.title}</li>
+                    </a>
             }</For>
         </ul>
     )

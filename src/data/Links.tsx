@@ -19,6 +19,11 @@ const Links = [
         title: 'Notification',
         link: '/notification'
     },
+    {
+        id: 5,
+        title: 'Address',
+        link: '/address'
+    },
 ];
 
 export default Links;

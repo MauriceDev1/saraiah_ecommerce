@@ -26,6 +26,8 @@ import Account from './pages/client/Account'
 import Notification from './pages/client/Notification'
 import Favourite from './pages/client/Favourite'
 import AdminLayout from './layouts/AdminLayout'
+import Cart from './pages/public/Cart'
+import Address from './pages/client/Address'
 
 
 const root = document.getElementById('root')
@@ -41,13 +43,14 @@ render(() => (
 			<Route path="/contact" component={Contact} />
 			<Route path="/login" component={Login} />
 			<Route path="/register" component={Register} />
+			<Route path="/cart" component={Cart} />
 			<Route path="*" component={NotFound} />
 			<Route path="/" component={AdminLayout}>
 				<Route path="/profile" component={Profile} />
 				<Route path="/orders" component={Orders} />
 				<Route path="/favourite" component={Favourite} />
 				<Route path="/notification" component={Notification} />
-				<Route path="/account" component={Account} />
+				<Route path="/address" component={Address} />
 			</Route>
 		</Router>
 	</AuthContextProvider>

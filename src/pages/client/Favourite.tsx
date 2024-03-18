@@ -2,9 +2,11 @@ import { Component } from "solid-js";
 
 const Favourite:Component = () => {
     return (
-        <div>
-            Favourite
-        </div>
+        <>
+            <h1 class="text-xl">
+                Favourite
+            </h1>
+        </>
     )
 }
 

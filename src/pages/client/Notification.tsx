@@ -2,9 +2,11 @@ import { Component } from "solid-js";
 
 const Notification:Component = () => {
     return (
-        <div>
-            Notification
-        </div>
+        <>
+            <h1 class="text-xl">
+                Notification
+            </h1>
+        </>
     )
 }
 
