@@ -1,7 +1,14 @@
-import { Component, createSignal } from "solid-js";
+import { Component, For, createSignal } from "solid-js";
 
 const Orders:Component = () => {
     const [orderData,setOrderData] = createSignal<any[]>([]);
+
+    const handleOrderAddress = () => {
+        const value = 5;
+        alert('remove favourite');
+        setOrderData((prv) => ({...prv,value}))
+    }
+
     return (
         <>
             <h1 class="text-xl">
@@ -30,6 +37,18 @@ const Orders:Component = () => {
                                 Action
                             </div>
                         </div>
+                        <For each={orderData()}>{
+                            (o) => <div class="w-full">
+                                <div>
+                                    {o}
+                                </div>
+                                <div>
+                                    <button onClick={handleOrderAddress}>
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        }</For>{}
                     </>
                 :
                     <div class="w-full h-[70vh] flex">

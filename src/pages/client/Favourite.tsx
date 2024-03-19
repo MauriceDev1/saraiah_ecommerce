@@ -1,7 +1,14 @@
-import { Component, createSignal } from "solid-js";
+import { Component, For, createSignal } from "solid-js";
 
 const Favourite:Component = () => {
     const [favouriteData,setFavouriteData] = createSignal<any[]>([]);
+
+    const handleRemoveAddress = () => {
+        const value = 5;
+        alert('remove favourite');
+        setFavouriteData((prv) => ({...prv,value}))
+    }
+
     return (
         <>
             <h1 class="text-xl">
@@ -30,6 +37,18 @@ const Favourite:Component = () => {
                                 Action
                             </div>
                         </div>
+                        <For each={favouriteData()}>{
+                            (f) => <div class="w-full">
+                                <div>
+                                    {f}
+                                </div>
+                                <div>
+                                    <button onClick={handleRemoveAddress}>
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        }</For>{}
                     </>
                 :
                     <div class="w-full h-[70vh] flex">

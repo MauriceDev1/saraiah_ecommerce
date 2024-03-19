@@ -3,14 +3,15 @@ import { Component, For, createSignal } from "solid-js";
 const Address:Component = () => {
     const [address,setAddress] = createSignal<string>();
     const [addresses,setAddresses] = createSignal<any[]>([]);
-    
+
     const handleAddress = (e: any) => {
-        const {name,value} = e.currentTarget;
+        const {value} = e.currentTarget;
         setAddress(value);
     }
 
     const handleAddressError = (e:any) => {
         const {name}  = e.currentTarget;
+        console.log(name);
     }
 
     const addAddress = () => {
@@ -23,15 +24,15 @@ const Address:Component = () => {
                 Address
             </h1>
             <div class="w-full flex mt-3">
-                <input 
-                    type="text" 
-                    name="address" 
+                <input
+                    type="text"
+                    name="address"
                     class="w-full max-w-[450px] h-9 border border-black"
                     onChange={handleAddress}
                     onInput={handleAddressError}
                 />
                 <button
-                    onClick={addAddress} 
+                    onClick={addAddress}
                     class="w-24 text-sm bg-black text-white"
                 >
                     Add

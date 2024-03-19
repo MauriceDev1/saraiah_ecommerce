@@ -1,5 +1,4 @@
 import { Component, For, createEffect, createSignal } from 'solid-js'
-import ShopsData from '../../data/Shops';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 
@@ -8,7 +7,7 @@ const Shops:Component = () => {
     createEffect(() => {
         getShopsData();
     });
-    
+
     const getShopsData = async () => {
         const querySnapshot = await getDocs(collection(db, "stores"));
         const data:any = [];

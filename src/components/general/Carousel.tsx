@@ -1,17 +1,16 @@
 import { Component, For, createEffect, createSignal } from "solid-js";
 import "solid-slider/slider.css";
 import { Slider, SliderButton, SliderProvider } from "solid-slider";
-import Shops from "../../data/Shops";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/config";
-import { RiArrowsArrowLeftDoubleFill, RiArrowsArrowLeftSLine, RiArrowsArrowRightDoubleFill, RiArrowsArrowRightSLine } from "solid-icons/ri";
+import {  RiArrowsArrowLeftSLine, RiArrowsArrowRightSLine } from "solid-icons/ri";
 
 const Carousel:Component = () => {
     const [storeData, setStoreData] = createSignal<any[]>([])
     createEffect(() => {
         getShopsData();
     });
-    
+
     const getShopsData = async () => {
         const querySnapshot = await getDocs(collection(db, "stores"));
         const data:any = [];
@@ -20,7 +19,7 @@ const Carousel:Component = () => {
         });
         setStoreData(data);
     }
-    
+
 
     const options = {
         loop: true,
@@ -37,7 +36,7 @@ const Carousel:Component = () => {
     return (
         <div class="w-full py-16">
             <div class="w-10/12 m-auto flex relative">
-                {storeData().length > 0 
+                {storeData().length > 0
                 ?
                 <SliderProvider>
                     <Slider options={options}>
