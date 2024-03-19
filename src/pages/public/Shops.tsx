@@ -12,7 +12,10 @@ const Shops:Component = () => {
         const querySnapshot = await getDocs(collection(db, "stores"));
         const data:any = [];
         querySnapshot.forEach((doc) => {
-            data.push(doc.data());
+			let doc_id = {'id': doc.id}
+			let doc_data = doc.data();
+			let new_data = Object.assign(doc_id,doc_data);
+            data.push(new_data);
         });
         setStoreData(data);
     }
@@ -22,7 +25,7 @@ const Shops:Component = () => {
 				<For each={storeData()}>{
 					(s) =>
 						<div class='w-1/2 md:w-1/4 lg:w-1/5 h-56 p-2'>
-							<a href={`/shop/${s.shop_id}`}>
+							<a href={`/shop/${s.id}`}>
 								<img src={s?.image} alt={s?.name} />
 							</a>
 						</div>

@@ -13,13 +13,13 @@ const Carousel:Component = () => {
 
     const getShopsData = async () => {
         const querySnapshot = await getDocs(collection(db, "stores"));
-        const data:any = [];
         querySnapshot.forEach((doc) => {
-            data.push(doc.data());
+            let doc_id = {"id":doc.id}
+            let doc_data = doc.data();
+            let new_data = Object.assign(doc_id,doc_data);
+            setStoreData((prv) => [...prv,new_data]);
         });
-        setStoreData(data);
     }
-
 
     const options = {
         loop: true,
@@ -41,7 +41,7 @@ const Carousel:Component = () => {
                 <SliderProvider>
                     <Slider options={options}>
                         <For each={storeData()}>{
-                            (s) =>  <a href={`/shop/${s.shop_id}`}>
+                            (s) =>  <a href={`/shop/${s.id}`}>
                                         <img src={s.image} alt={s.name} />
                                     </a>
                         }</For>

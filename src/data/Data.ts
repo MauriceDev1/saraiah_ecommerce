@@ -6,7 +6,7 @@ const Data = [
 	},
 	{
 		id:1,
-		title: 'Shops',
+		title: 'Shop',
 		link: '/shops',
 	},
 	{

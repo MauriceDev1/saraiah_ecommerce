@@ -27,6 +27,10 @@ import Favourite from './pages/client/Favourite'
 import AdminLayout from './layouts/AdminLayout'
 import Cart from './pages/public/Cart'
 import Address from './pages/client/Address'
+import Ladies from './pages/public/Ladies'
+import Men from './pages/public/Men'
+import Children from './pages/public/Children'
+import Toddlers from './pages/public/Toddlers'
 
 
 const root = document.getElementById('root')
@@ -39,6 +43,10 @@ render(() => (
 			<Route path="/shop/:id" component={Products} />
 			<Route path="/product/:id" component={Product} />
 			<Route path="/influencer" component={Categories} />
+			<Route path="/ladies" component={Ladies} />
+			<Route path="/men" component={Men} />
+			<Route path="/children" component={Children} />
+			<Route path="/toddlers" component={Toddlers} />
 			<Route path="/contact" component={Contact} />
 			<Route path="/login" component={Login} />
 			<Route path="/register" component={Register} />
