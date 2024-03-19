@@ -27,12 +27,12 @@ const ProductLayout:Component = () => {
 
     return (
         <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
-            <div class="w-1/2 border h-96">
-                <img src={productData()?.images[0]} alt={productData()?.title} />
+            <div class="w-1/3">
+                <img src={productData()?.images[0]} alt={productData()?.title} class="h-96" />
             </div>
-            <div class="w-1/2 flex flex-col gap-5">
-                <h1>{productData()?.name}</h1>
-                <h3>
+            <div class="w-1/3 flex flex-col gap-5">
+                <h1 class="text-2xl font-bold">{productData()?.name}</h1>
+                <h3 class="text-lg font-medium">
                     {productData()?.summary}
                 </h3>
                 <p>
@@ -62,6 +62,8 @@ const ProductLayout:Component = () => {
                         </div>
                     }</For>
                 </div>
+            </div>
+            <div class="w-1/3">
                 <div>
                     R {productData()?.price}
                 </div>
