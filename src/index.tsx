@@ -23,7 +23,6 @@ import Product from './pages/public/Product'
 import Profile from './pages/client/Profile'
 import Orders from './pages/client/Orders'
 import Notification from './pages/client/Notification'
-import Favourite from './pages/client/Favourite'
 import AdminLayout from './layouts/AdminLayout'
 import Cart from './pages/public/Cart'
 import Address from './pages/client/Address'
@@ -31,6 +30,7 @@ import Ladies from './pages/public/Ladies'
 import Men from './pages/public/Men'
 import Children from './pages/public/Children'
 import Toddlers from './pages/public/Toddlers'
+import Whishlist from './pages/client/Whishlist'
 
 
 const root = document.getElementById('root')
@@ -55,7 +55,7 @@ render(() => (
 			<Route path="/" component={AdminLayout}>
 				<Route path="/profile" component={Profile} />
 				<Route path="/orders" component={Orders} />
-				<Route path="/favourite" component={Favourite} />
+				<Route path="/whishlist" component={Whishlist} />
 				<Route path="/notification" component={Notification} />
 				<Route path="/address" component={Address} />
 			</Route>

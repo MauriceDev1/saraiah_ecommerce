@@ -1,12 +1,15 @@
 import { Component } from "solid-js";
-import Woman from '../../../assets/images/front-view-black-family-posing-studio (2).jpg'
+import Woman from '../../../assets/images/man-7506912_1280.jpg'
 
 
 const HomeBanner: Component = () => {
     return (
         <div class='w-full flex flex-wrap'>
-            <div class='w-full'>
+            <div class='w-full sm:w-1/2'>
                 <img src={Woman} alt="" />
+            </div>
+            <div class="w-full sm:w-1/2 bg-customColor2">
+
             </div>
         </div>
     )

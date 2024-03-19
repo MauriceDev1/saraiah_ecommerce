@@ -25,7 +25,7 @@ const App = ({children}: any) => {
         location.pathname === '/orders' ||
         location.pathname === '/address' ||
         location.pathname === '/notification' ||
-        location.pathname === '/favourite'
+        location.pathname === '/whishlist'
           ? 
             null 
           : 

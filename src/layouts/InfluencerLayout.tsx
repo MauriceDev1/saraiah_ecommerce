@@ -24,12 +24,7 @@ const InfluencerLayout:Component = () => {
     return (
         <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
             <For each={influencerData()}>{
-                (i) => <div class="w-1/5">
-                        <div class="w-full h-72 overflow-hidden">
-                            <img src={i.image} alt={i.username} class="w-full"/>
-                        </div>
-                        <p>{i.username}</p>
-                    </div>
+                (i) => <InfluencerCard image={i.image} username={i.username} />
             }</For>
         </div>
     )

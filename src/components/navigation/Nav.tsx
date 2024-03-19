@@ -87,7 +87,7 @@ const Nav: Component = () => {
 									<ul class="text-black w-full">
 										<For each={Links}>{
 											(l) => <a href={l.link}>
-													<li class="py-1 border-b border-gray-400 ">{l.title}</li>
+													<li class="py-1 border-b border-gray-400 px-5">{l.title}</li>
 												</a>
 										}</For>
 									</ul>

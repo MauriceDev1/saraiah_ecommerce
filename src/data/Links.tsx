@@ -11,8 +11,8 @@ const Links = [
     },
     {
         id: 3,
-        title: 'Favourite',
-        link: '/favourite'
+        title: 'Whishlist',
+        link: '/whishlist'
     },
     {
         id: 4,

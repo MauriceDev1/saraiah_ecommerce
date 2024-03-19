@@ -76,7 +76,7 @@ const Login:Component = () => {
                     <h1 class="text-2xl text-center">
                         Login
                     </h1>
-                    <div class="text-lg">
+                    <div>
                         <div class="py-3">
                             <label>
                                 Email
@@ -88,7 +88,7 @@ const Login:Component = () => {
                             placeholder={dataError().email ? dataError().email : 'Email'}
                             onInput={enterData}
                             onChange={errorHandling}
-                            class="w-full border h-12 rounded border-gray-300 px-2" 
+                            class="w-full border h-10 rounded border-gray-300 px-2" 
                         />
                         <div class="py-3">
                             <label>
@@ -101,9 +101,9 @@ const Login:Component = () => {
                             placeholder={dataError().password ? dataError().password : 'Password'}
                             onInput={enterData}
                             onChange={errorHandling}
-                            class="w-full border h-12 rounded border-gray-300 px-2" 
+                            class="w-full border h-10 rounded border-gray-300 px-2" 
                         />
-                        <button onClick={onSubmit} class="w-full my-5 bg-black text-white h-12 rounded">{loading() ? <div class="loader m-auto"></div> : 'Login'}</button>
+                        <button onClick={onSubmit} class="w-full my-5 bg-black text-white h-10 rounded">{loading() ? <div class="loader m-auto"></div> : 'Login'}</button>
                         <div class="flex justify-between">
                             <p>
                                 Register 
