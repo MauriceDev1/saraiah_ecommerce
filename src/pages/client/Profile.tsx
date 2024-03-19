@@ -1,5 +1,4 @@
 import { Component, createEffect, createSignal } from "solid-js";
-import { useAuthContext } from "../../context/AuthContext";
 import cookie from "cookiejs";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";

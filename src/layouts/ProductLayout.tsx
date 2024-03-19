@@ -1,5 +1,5 @@
 import { useParams } from "@solidjs/router";
-import { doc, getDoc, getDocFromCache } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { Component, For, createEffect, createSignal } from "solid-js";
 import { db } from "../firebase/config";
 
