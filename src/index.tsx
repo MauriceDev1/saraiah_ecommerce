@@ -22,7 +22,6 @@ import Product from './pages/public/Product'
 /* This is client side page */
 import Profile from './pages/client/Profile'
 import Orders from './pages/client/Orders'
-import Account from './pages/client/Account'
 import Notification from './pages/client/Notification'
 import Favourite from './pages/client/Favourite'
 import AdminLayout from './layouts/AdminLayout'
