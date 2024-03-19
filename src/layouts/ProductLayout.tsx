@@ -2,6 +2,7 @@ import { useParams } from "@solidjs/router";
 import { doc, getDoc } from "firebase/firestore";
 import { Component, For, createEffect, createSignal } from "solid-js";
 import { db } from "../firebase/config";
+import { BsHeart } from "solid-icons/bs";
 
 const ProductLayout:Component = () => {
     const [productData,setProductData] = createSignal<any>();
@@ -67,9 +68,12 @@ const ProductLayout:Component = () => {
                 <div>
                     R {productData()?.price}
                 </div>
-                <button class="bg-black h-10 text-white px-10">
-                    Add to Cart
-                </button>
+                <div class="flex items-center gap-5">
+                    <button class="bg-black h-10 text-white px-10">
+                        Add to Cart
+                    </button>
+                    <BsHeart />
+                </div>
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import { Component, For, createSignal } from "solid-js";
 
 const Favourite:Component = () => {
-    const [favouriteData,setFavouriteData] = createSignal<any[]>([]);
+    const [favouriteData,setFavouriteData] = createSignal<any[]>([{'id':1}]);
 
     const handleRemoveAddress = () => {
         const value = 5;
@@ -12,7 +12,7 @@ const Favourite:Component = () => {
     return (
         <>
             <h1 class="text-xl">
-                Favourite
+                Wishlist
             </h1>
             {favouriteData().length > 0
                 ?
@@ -53,7 +53,7 @@ const Favourite:Component = () => {
                 :
                     <div class="w-full h-[70vh] flex">
                         <div class="m-auto">
-                            No favourites at current moment
+                            No items in your wishlist at the current moment
                         </div>
                     </div>
             }

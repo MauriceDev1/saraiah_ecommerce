@@ -16,6 +16,11 @@ const Profile:Component = () => {
         getUserData(userId);
     });
 
+    const handleChange = (e: any) => {
+        const {name,value} = e.currentTarget();
+        alert(name);
+    }
+
     const getUserData = async (e:any) => {
         const docRef = doc(db, "users", `${e}`);
         const docSnap = await getDoc(docRef);
@@ -46,6 +51,7 @@ const Profile:Component = () => {
                 name="name"
                 value={userData().name} 
                 placeholder={userData().name === '' ? 'Enter name' : ''}
+                onChange={(e) => handleChange(e)}
                 class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
             />
             <div class="py-2">
@@ -56,6 +62,7 @@ const Profile:Component = () => {
                 name="surname" 
                 value={userData().surname} 
                 placeholder={userData().surname === '' ? 'Enter surname' : ''}
+                onChange={(e) => handleChange(e)}
                 class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
             />
             <div class="py-2">
@@ -66,6 +73,7 @@ const Profile:Component = () => {
                 name="email" 
                 value={userData().email} 
                 placeholder={userData().email === '' ? 'Enter email' : ''}
+                onChange={(e) => handleChange(e)}
                 class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
             />
             <div class="py-2">
@@ -75,7 +83,8 @@ const Profile:Component = () => {
                 type="text" 
                 name="cellphone" 
                 value={userData().cellphone}
-                placeholder={userData().cellphone === '' ? 'Enter cellphone' : ''} 
+                placeholder={userData().cellphone === '' ? 'Enter cellphone' : ''}
+                onChange={(e) => handleChange(e)} 
                 class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
             />
             <br></br>

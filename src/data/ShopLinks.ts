@@ -1,29 +1,24 @@
 const ShopLinks = [
     {
         id: 1,
-        title: 'Shops',
-        link: '/shops'
-    },
-    {
-        id: 2,
         title: 'Ladies',
         link: '/ladies'
     },
     {
-        id: 3,
+        id: 2,
         title: 'Men',
         link: '/men'
     },
     {
-        id: 4,
-        title: 'Children',
+        id: 3,
+        title: 'Children & Toddlers',
         link: '/children'
     },
     {
-        id: 5,
-        title: 'Toddlers',
-        link: '/toddlers'
-    },
+        id: 4,
+        title: 'All Shops',
+        link: '/shops'
+    }
 ];
 
 export default ShopLinks;

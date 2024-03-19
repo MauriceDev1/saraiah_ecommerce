@@ -7,6 +7,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/userLogout"
 import { useNavigate } from "@solidjs/router";
 import ShopLinks from "../../data/ShopLinks";
+import Links from "../../data/Links";
 
 const Nav: Component = () => {
   const navigate = useNavigate();
@@ -82,20 +83,13 @@ const Nav: Component = () => {
 								>
 									M
 								</button>
-								<div class={`${profileMenu() ? "h-56" : "h-0" } overflow-hidden duration-200 ease-in-out -left-20 absolute w-[188px]  bg-customColor top-14`}>
-									<ul class="text-black flex flex-col gap-3 pt-5 px-3">
-										<a href="/profile">
-											<li>Profile</li>
-										</a>
-										<a href="/orders">
-											<li>Orders</li>
-										</a>
-										<a href="/favourite">
-											<li>Favourite</li>
-										</a>
-										<a href="/notification">
-											<li>Notification</li>
-										</a>
+								<div class={`${profileMenu() ? "flex" : "hidden" }  -left-20 absolute w-[188px]  bg-customColor top-10`}>
+									<ul class="text-black w-full">
+										<For each={Links}>{
+											(l) => <a href={l.link}>
+													<li class="py-1 border-b border-gray-400 ">{l.title}</li>
+												</a>
+										}</For>
 									</ul>
 								</div>
 							</div>
