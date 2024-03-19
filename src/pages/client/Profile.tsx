@@ -17,7 +17,7 @@ const Profile:Component = () => {
     });
 
     const handleChange = (e: any) => {
-        const {name,value} = e.currentTarget();
+        const {name} = e.currentTarget();
         alert(name);
     }
 

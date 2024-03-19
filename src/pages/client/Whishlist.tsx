@@ -1,13 +1,8 @@
 import { Component, For, createSignal } from "solid-js";
 
 const Whishlist:Component = () => {
-    const [favouriteData,setFavouriteData] = createSignal<any[]>([]);
+    const [favouriteData] = createSignal<any[]>([]);
 
-    const handleRemoveAddress = () => {
-        const value = 5;
-        alert('remove favourite');
-        setFavouriteData((prv) => ({...prv,value}))
-    }
 
     return (
         <>
