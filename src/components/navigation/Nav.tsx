@@ -6,6 +6,7 @@ import Logo from '../../assets/images/IMG_2282-removebg-preview.png'
 import { useAuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/userLogout"
 import { useNavigate } from "@solidjs/router";
+import ShopLinks from "../../data/ShopLinks";
 
 const Nav: Component = () => {
   const navigate = useNavigate();
@@ -37,8 +38,14 @@ const Nav: Component = () => {
 							?
 								<li class="relative cursor-pointer" onClick={toggleShopMenu}>
 									{l.title}
-									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 mt-4 -left-20 py-10 absolute`}>
-
+									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-4 -left-20 absolute`}>
+										<ul>
+											<For each={ShopLinks}>{
+												(s) => <button class="p-2 border-b border-gray-300 w-full" onclick={() => navigate(s.link)}>
+													{s.title}
+												</button>
+											}</For>
+										</ul>
 									</div>
 								</li>
 							:
