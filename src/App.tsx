@@ -21,11 +21,12 @@ const App = ({children}: any) => {
       {
         location.pathname === '/login' || 
         location.pathname === '/register' ||
+        location.pathname === '/cart' ||
         location.pathname === '/profile' ||
         location.pathname === '/orders' ||
         location.pathname === '/address' ||
         location.pathname === '/notification' ||
-        location.pathname === '/whishlist'
+        location.pathname === '/whishlist' 
           ? 
             null 
           : 

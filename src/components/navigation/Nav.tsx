@@ -1,7 +1,7 @@
 import { Component, For, createSignal } from "solid-js";
 import Data from '../../data/Data';
 import { IoCartOutline } from "solid-icons/io";
-import { HiOutlineBell } from "solid-icons/hi";
+import { HiOutlineBell, HiOutlineHeart } from "solid-icons/hi";
 import Logo from '../../assets/images/IMG_2282-removebg-preview.png'
 import { useAuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/userLogout"
@@ -67,6 +67,9 @@ const Nav: Component = () => {
         	</div>
 
         	<div class="flex gap-6 items-center z-50">
+				<button onClick={() => navigate('/whishlist')}>
+					<HiOutlineHeart class="text-2xl" />
+				</button>
 				<button onClick={() => navigate('/notification')}>
 					<HiOutlineBell class="text-2xl" />
 				</button>

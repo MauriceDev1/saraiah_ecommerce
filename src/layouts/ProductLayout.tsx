@@ -1,17 +1,19 @@
 import { useParams } from "@solidjs/router";
-import { doc, getDoc } from "firebase/firestore";
+import { Timestamp, addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { Component, For, createEffect, createSignal } from "solid-js";
 import { db } from "../firebase/config";
 import { BsHeart } from "solid-icons/bs";
+import cookie from "cookiejs";
 
 const ProductLayout:Component = () => {
     const [productData,setProductData] = createSignal<any>();
     const {id} = useParams();
+    const userId = cookie.get('userId');
 
     createEffect(() => {
         getProductData(id)
     });
-
+    
     const getProductData = async (e: any) => {
         const docRef = doc(db, "products", `${e}`);
         const docSnap = await getDoc(docRef);
@@ -23,6 +25,20 @@ const ProductLayout:Component = () => {
             setProductData(new_data);
         } else {
             console.log("No such document!");
+        }
+    }
+
+    const addToWishlist = async () => {
+        const docRef = await addDoc(collection(db, "whishlist"), {
+            user_id: userId,
+            product_id: productData().id,
+            image: productData().images[0],
+            created_at: Timestamp.now()
+        });
+        if(docRef.id){
+            alert('Product was added to your wish list');
+        } else {
+            alert('Your product was not added to your wish list');
         }
     }
 
@@ -72,7 +88,9 @@ const ProductLayout:Component = () => {
                     <button class="bg-black h-10 text-white px-10">
                         Add to Cart
                     </button>
-                    <BsHeart />
+                    <button onClick={addToWishlist}>
+                        <BsHeart />
+                    </button>
                 </div>
             </div>
         </div>
