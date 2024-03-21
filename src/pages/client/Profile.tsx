@@ -1,6 +1,6 @@
 import { Component, createEffect, createSignal } from "solid-js";
 import cookie from "cookiejs";
-import { doc, getDoc } from "firebase/firestore";
+import { Timestamp, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import LoadingScreen from "../../components/general/LoadingScreen";
 
@@ -12,6 +12,14 @@ const Profile:Component = () => {
         email: '',
         cellphone: ''
     });
+    
+    const [ userDataError, setUserDataError ] = createSignal({
+        name: '', 
+        surname: '',
+        email: '',
+        cellphone: ''
+    });
+
     const userId = cookie.get('userId');
 
     createEffect(() => {
@@ -19,8 +27,8 @@ const Profile:Component = () => {
     });
 
     const handleChange = (e: any) => {
-        const {name} = e.currentTarget();
-        alert(name);
+        const {name, value} = e.currentTarget;
+        setUserData((prv) => ({...prv,[name]:value}));
     }
 
     const getUserData = async (e:any) => {
@@ -41,6 +49,41 @@ const Profile:Component = () => {
         }
     }
 
+    const handleSubmit = async () => {
+        const {
+            name,
+            surname,
+            email,
+            cellphone
+        } = userData();
+        if(name === '' || name.length <3 || email === ''){
+            if(name === ''){
+                setUserDataError((prv) => ({...prv,name:"Name is a required field!"}));
+            } else if (name.length < 3){
+                setUserDataError((prv) => ({...prv,name:"Name field can be less than three characters!"}));
+            }
+            if(email === ''){
+                setUserDataError((prv) => ({...prv,email:"Emali is a required field!"}));
+            }
+            return
+        }
+        const userRef = doc(db, "users", `${userId}`);
+            // Set the "capital" field of the city 'DC'
+        try {
+            await updateDoc(userRef, {
+                name,
+                surname,
+                email,
+                cellphone,
+                update_at: Timestamp.now()
+            });
+        } catch (error) {
+            console.log('An error has occured')
+        } finally {
+            alert('Profile updated successfully');
+        }    
+    }
+
     return (
         <>
             <h1 class="text-xl">
@@ -56,7 +99,7 @@ const Profile:Component = () => {
                             type="text" 
                             name="name"
                             value={userData().name} 
-                            placeholder={userData().name === '' ? 'Enter name' : ''}
+                            placeholder={userDataError().name !== '' ? userDataError().name : 'Enter name'}
                             onChange={(e) => handleChange(e)}
                             class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
                         />
@@ -67,7 +110,7 @@ const Profile:Component = () => {
                             type="text" 
                             name="surname" 
                             value={userData().surname} 
-                            placeholder={userData().surname === '' ? 'Enter surname' : ''}
+                            placeholder={userDataError().surname !== '' ? userDataError().surname : 'Enter surname'}
                             onChange={(e) => handleChange(e)}
                             class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
                         />
@@ -78,7 +121,7 @@ const Profile:Component = () => {
                             type="email" 
                             name="email" 
                             value={userData().email} 
-                            placeholder={userData().email === '' ? 'Enter email' : ''}
+                            placeholder={userDataError().email !== '' ? userDataError().email : 'Enter email'}
                             onChange={(e) => handleChange(e)}
                             class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
                         />
@@ -89,12 +132,15 @@ const Profile:Component = () => {
                             type="text" 
                             name="cellphone" 
                             value={userData().cellphone}
-                            placeholder={userData().cellphone === '' ? 'Enter cellphone' : ''}
+                            placeholder={userDataError().cellphone !== '' ? userDataError().cellphone : 'Enter cellphone'}
                             onChange={(e) => handleChange(e)} 
                             class="w-full max-w-[450px] border h-9 border-gray-300 px-2"
                         />
                         <br></br>
-                        <button class="w-full max-w-[450px] bg-black h-9 mt-5 text-white">
+                        <button
+                            onClick={handleSubmit} 
+                            class="w-full max-w-[450px] bg-black h-9 mt-5 text-white"
+                        >
                             Update
                         </button>
                     </>

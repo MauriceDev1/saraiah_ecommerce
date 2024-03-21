@@ -39,10 +39,10 @@ const Nav: Component = () => {
 							?
 								<li class="relative cursor-pointer" onClick={toggleShopMenu}>
 									{l.title}
-									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-4 -left-20 absolute`}>
+									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-[15.8px] -left-20 absolute`}>
 										<ul>
 											<For each={ShopLinks}>{
-												(s) => <button class="p-2 border-b border-gray-300 w-full" onclick={() => navigate(s.link)}>
+												(s) => <button class="p-2 hover:bg-gray-300 w-full" onclick={() => navigate(s.link)}>
 													{s.title}
 												</button>
 											}</For>
@@ -86,7 +86,7 @@ const Nav: Component = () => {
 								>
 									M
 								</button>
-								<div class={`${profileMenu() ? "flex" : "hidden" }  -left-20 absolute w-[188px]  bg-customColor top-10`}>
+								<div class={`${profileMenu() ? "flex" : "hidden" }  -left-20 absolute w-[188px]  bg-customColor top-11`}>
 									<ul class="text-black w-full">
 										<For each={Links}>{
 											(l) => <a href={l.link}>
