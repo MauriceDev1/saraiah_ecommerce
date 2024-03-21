@@ -23,6 +23,8 @@ const Ladies:Component = () => {
         });
     }
 
+    console.log(listOfLadiesProducts());
+
     return (
         <>
            <ProductsLayout />
