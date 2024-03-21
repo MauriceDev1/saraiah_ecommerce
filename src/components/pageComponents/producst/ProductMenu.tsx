@@ -4,7 +4,7 @@ const ProductMenu: Component = () => {
     
 
     return (
-        <div class="w-[350px] border h-96 sticky top-32">
+        <div class="w-[350px] border border-gray-300 h-96 sticky top-36 bg-customColor ">
             <div class="w-full boredr">
                 
             </div>

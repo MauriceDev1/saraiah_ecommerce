@@ -2,7 +2,7 @@ import cookie from "cookiejs";
 import { Accessor, Setter, createContext, useContext, createSignal} from "solid-js"
 
 interface ContextProps {
-    isAuth: Accessor<boolean | string>,
+    isAuth: Accessor<boolean | string>
     setIsAuth: Setter<boolean | string>
     userId: Accessor<boolean | string>
     setUserId: Setter<boolean | string>

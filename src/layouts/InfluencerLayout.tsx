@@ -2,8 +2,10 @@ import { Component, For, createEffect, createSignal } from "solid-js";
 import InfluencerCard from "../components/pageComponents/influencers/InfluencerCard";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/config";
+import LoadingScreen from "../components/general/LoadingScreen";
 
 const InfluencerLayout:Component = () => {
+    const [loading, setLoading] = createSignal(false);
     const [influencerData,setInfluencerDatga] = createSignal<any[]>([]);
 
     createEffect(() => {
@@ -19,13 +21,19 @@ const InfluencerLayout:Component = () => {
           let new_data = Object.assign(doc_id,doc_data);
           setInfluencerDatga((prv) => [...prv,new_data]);
         });
+        setLoading(true);
     }
 
     return (
         <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
-            <For each={influencerData()}>{
-                (i) => <InfluencerCard image={i.image} username={i.username} />
-            }</For>
+            {loading() 
+                ?
+                    <For each={influencerData()}>{
+                        (i) => <InfluencerCard image={i.image} username={i.username} />
+                    }</For>
+                :
+                <LoadingScreen />
+            }
         </div>
     )
 }

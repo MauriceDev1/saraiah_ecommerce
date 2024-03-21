@@ -21,7 +21,11 @@ const Nav: Component = () => {
   }
 
   const toggleShopMenu = () => {
-	setShopMenu(!shopMenu());
+	setShopMenu(true);
+  }
+
+  const closeShopMenu = () => {
+	setShopMenu(false);
   }
 
   const toggleProfileMenu = () => {
@@ -37,9 +41,9 @@ const Nav: Component = () => {
 					<>
 						{l.link === '/shops'
 							?
-								<li class="relative cursor-pointer" onClick={toggleShopMenu}>
+								<li class="relative cursor-pointer" onMouseEnter={toggleShopMenu}>
 									{l.title}
-									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-[15.8px] -left-20 absolute`}>
+									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-[15.8px] -left-20 absolute`} onMouseLeave={closeShopMenu}>
 										<ul>
 											<For each={ShopLinks}>{
 												(s) => <button class="p-2 hover:bg-gray-300 w-full" onclick={() => navigate(s.link)}>
@@ -50,7 +54,7 @@ const Nav: Component = () => {
 									</div>
 								</li>
 							:
-								<a href={l.link}>
+								<a href={l.link} onMouseEnter={closeShopMenu}>
 									<li>{l.title}</li>
 								</a>
 						}
@@ -73,8 +77,11 @@ const Nav: Component = () => {
 				<button onClick={() => navigate('/notification')}>
 					<HiOutlineBell class="text-2xl" />
 				</button>
-				<button onClick={() => navigate('/cart')}>
+				<button onClick={() => navigate('/cart')} class="relative">
 					<IoCartOutline class="text-2xl" />
+					<div class="w-4 h-4 absolute top-3 -right-1 rounded-full bg-red-500">
+
+					</div>
 				</button>
 				{isAuth()
 					?

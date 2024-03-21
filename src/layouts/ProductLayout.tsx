@@ -4,9 +4,11 @@ import { Component, For, createEffect, createSignal } from "solid-js";
 import { db } from "../firebase/config";
 import { BsHeart } from "solid-icons/bs";
 import cookie from "cookiejs";
+import { useCartContext } from "../context/CartContext";
 
 const ProductLayout:Component = () => {
-    const [productData,setProductData] = createSignal<any>();
+    const {addToCart} = useCartContext();
+    const [productData, setProductData] = createSignal<any>();
     const {id} = useParams();
     const userId = cookie.get('userId');
 
@@ -40,6 +42,10 @@ const ProductLayout:Component = () => {
         } else {
             alert('Your product was not added to your wish list');
         }
+    }
+
+    const addToShoppingCart = () => {
+        addToCart(productData());
     }
 
     return (
@@ -85,7 +91,10 @@ const ProductLayout:Component = () => {
                     R {productData()?.price}
                 </div>
                 <div class="flex items-center gap-5">
-                    <button class="bg-black h-10 text-white px-10">
+                    <button
+                        onClick={addToShoppingCart} 
+                        class="bg-black h-10 text-white px-10"
+                    >
                         Add to Cart
                     </button>
                     <button onClick={addToWishlist}>

@@ -31,34 +31,37 @@ import Men from './pages/public/Men'
 import Children from './pages/public/Children'
 import Toddlers from './pages/public/Toddlers'
 import Whishlist from './pages/client/Whishlist'
+import { CartContextProvider } from './context/CartContext'
 
 
 const root = document.getElementById('root')
 
 render(() => (
 	<AuthContextProvider>
-		<Router root={App}>
-			<Route path="/" component={Home} />
-			<Route path="/shops" component={Shops} />
-			<Route path="/shop/:id" component={Products} />
-			<Route path="/product/:id" component={Product} />
-			<Route path="/influencer" component={Categories} />
-			<Route path="/ladies" component={Ladies} />
-			<Route path="/men" component={Men} />
-			<Route path="/children" component={Children} />
-			<Route path="/toddlers" component={Toddlers} />
-			<Route path="/contact" component={Contact} />
-			<Route path="/login" component={Login} />
-			<Route path="/register" component={Register} />
-			<Route path="/cart" component={Cart} />
-			<Route path="*" component={NotFound} />
-			<Route path="/" component={AdminLayout}>
-				<Route path="/profile" component={Profile} />
-				<Route path="/orders" component={Orders} />
-				<Route path="/whishlist" component={Whishlist} />
-				<Route path="/notification" component={Notification} />
-				<Route path="/address" component={Address} />
-			</Route>
-		</Router>
+		<CartContextProvider>
+			<Router root={App}>
+				<Route path="/" component={Home} />
+				<Route path="/shops" component={Shops} />
+				<Route path="/shop/:id" component={Products} />
+				<Route path="/product/:id" component={Product} />
+				<Route path="/influencer" component={Categories} />
+				<Route path="/ladies" component={Ladies} />
+				<Route path="/men" component={Men} />
+				<Route path="/children" component={Children} />
+				<Route path="/toddlers" component={Toddlers} />
+				<Route path="/contact" component={Contact} />
+				<Route path="/login" component={Login} />
+				<Route path="/register" component={Register} />
+				<Route path="/cart" component={Cart} />
+				<Route path="*" component={NotFound} />
+				<Route path="/" component={AdminLayout}>
+					<Route path="/profile" component={Profile} />
+					<Route path="/orders" component={Orders} />
+					<Route path="/whishlist" component={Whishlist} />
+					<Route path="/notification" component={Notification} />
+					<Route path="/address" component={Address} />
+				</Route>
+			</Router>
+		</CartContextProvider>
 	</AuthContextProvider>
 ), root!)

@@ -26,7 +26,8 @@ const ProductsLayout: Component = () => {
     return (
         <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
             <ProductMenu />
-            <div class="w-full flex flex-wrap">
+            <div class="w-full flex flex-wrap -mt-2">
+
                 {productsList().length > 0 
                     ?
                         <For each={productsList()}>{
