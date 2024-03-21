@@ -30,7 +30,7 @@ const Nav: Component = () => {
 
   return (
     <nav class="w-full md:pt-10 fixed z-50">
-      <div class="w-full text-md md:w-11/12 m-auto relative flex bg-opacity-90 rounded-sm justify-between bg-customColor h-14 items-center px-5">
+      <div class="w-full text-md md:w-11/12 m-auto relative border border-slate-300 flex bg-opacity-90 rounded-sm justify-between bg-customColor h-14 items-center px-5">
 
 			<ul class="lg:flex gap-10 hidden z-50">
           		<For each={Data}>{(l) => (
@@ -90,7 +90,7 @@ const Nav: Component = () => {
 									<ul class="text-black w-full">
 										<For each={Links}>{
 											(l) => <a href={l.link}>
-													<li class="py-1 border-b border-gray-400 px-5">{l.title}</li>
+													<li class="p-2 hover:bg-gray-300 px-5">{l.title}</li>
 												</a>
 										}</For>
 									</ul>

@@ -15,13 +15,13 @@ const App = ({children}: any) => {
           : 
             <Nav/> 
       }
-      <div class="min-h-screen">
+      <div class="min-h-screen bg-gray-100">
           {children}
       </div>
       {
         location.pathname === '/login' || 
         location.pathname === '/register' ||
-        location.pathname === '/cart' ||
+        location.pathname === '/cart' ||  
         location.pathname === '/profile' ||
         location.pathname === '/orders' ||
         location.pathname === '/address' ||
