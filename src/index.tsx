@@ -44,7 +44,7 @@ render(() => (
 				<Route path="/shops" component={Shops} />
 				<Route path="/shop/:id" component={Products} />
 				<Route path="/product/:id" component={Product} />
-				<Route path="/influencer" component={Categories} />
+				<Route path="/influencers" component={Categories} />
 				<Route path="/ladies" component={Ladies} />
 				<Route path="/men" component={Men} />
 				<Route path="/children" component={Children} />

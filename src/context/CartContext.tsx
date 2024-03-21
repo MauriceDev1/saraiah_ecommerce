@@ -8,6 +8,7 @@ interface Product {
     images: string[];
     stock: string;
     store_id: string;
+    quantity: number;
     details: string;
     sizes: string[];
     category: string;
@@ -27,11 +28,19 @@ export function CartContextProvider(props: any) {
     const [cart, setCart] = createSignal<Product[]>([]);
 
     const addToCart = (product: Product) => {
-        console.log("Adding to cart:", product);
         setCart(prevCart => {
-            const newCart = prevCart ? [...prevCart, product] : [product];
-            console.log("New cart:", newCart);
-            return newCart;
+            // Check if the product already exists in the cart
+            const existingProductIndex = prevCart.findIndex(item => item.id === product.id);
+
+            if (existingProductIndex !== -1) {
+                // Product already exists in the cart, update its quantity
+                const updatedCart = [...prevCart];
+                updatedCart[existingProductIndex].quantity += 1; // Increase quantity
+                return updatedCart;
+            } else {
+                // Product doesn't exist in the cart, add it with quantity 1
+                return [...prevCart, { ...product, quantity: 1 }];
+            }
         });
     };
 

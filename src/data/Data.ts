@@ -12,7 +12,7 @@ const Data = [
 	{
 		id:2,
 		title: 'Influencers',
-		link: '/influencer',
+		link: '/influencers',
 	},
 	{
 		id:3,

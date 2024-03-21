@@ -23,11 +23,6 @@ const Footer:Component = () => {
 							</a>
 						</li>
 						<li>
-							<a href="/lookbook">
-								Lookbook
-							</a>
-						</li>
-						<li>
 							<a href="/contact">
 								Contact
 							</a>
@@ -38,8 +33,8 @@ const Footer:Component = () => {
 					<h3 class="font-bold pb-3">More</h3>
 					<ul>
 						<li>
-							<a href="/blog">
-								Blog
+							<a href="/influencers">
+								Influencers
 							</a>
 						</li>
 					</ul>
