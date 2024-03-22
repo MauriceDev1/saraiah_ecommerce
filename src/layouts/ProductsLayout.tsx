@@ -28,7 +28,6 @@ const ProductsLayout: Component = () => {
 
     return (
         <div class="w-11/12 m-auto pt-16 lg:pt-32 flex gap-5 py-10">
-            {/* <ProductMenu /> */}
             {loading() 
                 ?
                     <div class="w-full flex flex-wrap">
@@ -37,16 +36,16 @@ const ProductsLayout: Component = () => {
                             ?
                                 <For each={productsList()}>{
                                     (d) => 
-                                        <a href={`/product/${d.id}`} class="w-full lg:w-1/6">
-                                            <div class="w-full shadow bg-white">
-                                                <div class="w-full bg-gray-200">
-                                                    <img src={d.images[0]} alt={d.title}/>
+                                        <a href={`/product/${d.id}`} class="w-1/2 lg:w-1/6">
+                                            <div class="w-full shadow bg-white border border-gray-300">
+                                                <div class="w-full bg-gray-200 h-56">
+                                                    <img src={d.images[0]} alt={d.title} class="h-52 m-auto"/>
                                                 </div>
-                                                <div class="px-2 pb-2">
-                                                    <h3 class="text-center text-md pt-2 pb-1">
+                                                <div class="px-2 pb-2 border-t border-gray-200">
+                                                    <h3 class="text-center text-md pt-2 pb-1 underline font-semibold">
                                                         {d.name}
                                                     </h3>
-                                                    <p class="text-sm text-center">
+                                                    <p class="text-sm text-center font-medium">
                                                         {d.summary}
                                                     </p>
                                                 </div>

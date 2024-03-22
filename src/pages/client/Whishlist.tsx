@@ -35,13 +35,30 @@ const Whishlist:Component = () => {
                 {loading()
                     ?
                         <>
+                        <div class="w-full bg-black text-white py-2 flex mt-3">
+                            <div class="w-1/4 px-2">
+                                Image
+                            </div>
+                            <div class="w-1/4 px-2">
+                                Description
+                            </div>
+                            <div class="w-1/4 px-2">
+                                Price
+                            </div>
+                            <div class="w-1/4 px-2">
+                                Action
+                            </div>
+                        </div>
                             {favouriteData().length > 0
                                 ?
-                                <div>
+                                <div class="w-full flex flex-col gap-2 overflow-y-scroll h-[50vh]">
                                     <For each={favouriteData()}>{
                                         (f) => 
                                             <div>
-                                                <img src={f.image} alt="whishlist item" class="w-1/5"/>
+                                                <img src={f.image} alt="whishlist item" class="h-32"/>
+                                                <h3>
+                                                    {f.name}
+                                                </h3>
                                             </div>
                                     }</For>   
                                 </div>

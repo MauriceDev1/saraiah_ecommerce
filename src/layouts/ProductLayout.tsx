@@ -34,11 +34,14 @@ const ProductLayout:Component = () => {
     }
 
     const addToWishlist = async () => {
+        alert('please select size and colour')
         const docRef = await addDoc(collection(db, "whishlist"), {
             user_id: userId,
             product_id: productData().id,
             name: productData().name,
             image: productData().images[0],
+            summary: productData().summary,
+            price: productData().price,
             created_at: Timestamp.now()
         });
         if(docRef.id){
@@ -50,14 +53,15 @@ const ProductLayout:Component = () => {
 
     const addToShoppingCart = () => {
         addToCart(productData());
+        alert('product added to cart');
     }
 
     return (
         <>
             {loading() 
                 ?
-                    <div class="w-11/12 m-auto pt-16 md:pt-32 flex md:gap-5 flex-wrap md:flex-nowrap py-10">
-                        <div class="w-full md:w-1/3">
+                    <div class="w-10/12 m-auto pt-16 md:pt-32 flex md:gap-5 flex-wrap md:flex-nowrap py-10">
+                        <div class="w-full md:w-1/3 bg-gray-200 flex">
                             <img src={productData()?.images[0]} alt={productData()?.title} class="h-96 m-auto" />
                         </div>
                         <div class="w-full md:w-1/3 flex flex-col gap-5">
@@ -70,9 +74,6 @@ const ProductLayout:Component = () => {
                             </p>
                             <div>
                                 {productData()?.gender}
-                            </div>
-                            <div>
-                                {productData()?.stock}
                             </div>
                             <div class="w-full border-b pb-2">
                                 Colours
@@ -98,6 +99,12 @@ const ProductLayout:Component = () => {
                                     </div>
                                 }</For>
                             </div>
+                            <div class="flex gap-4 items-center">
+                                <span class="bg-green-600 text-white px-3 py-1 rounded-full">
+                                    Stock Available: 
+                                </span>
+                                {productData()?.stock}
+                            </div>
                         </div>
                         <div class="w-full md:w-1/3">
                             <div class="text-2xl pb-5 flex justify-between">
@@ -107,6 +114,12 @@ const ProductLayout:Component = () => {
                                 <h3>
                                     R {productData()?.price}
                                 </h3>
+                            </div>
+                            <div>
+                                <h3 class="text-xl text-center">
+                                    Quantity
+                                </h3>
+                                
                             </div>
                             <div class="flex items-center gap-5">
                                 <button

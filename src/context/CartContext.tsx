@@ -37,6 +37,7 @@ export function CartContextProvider(props: any) {
                 // Product already exists in the cart, update its quantity
                 const updatedCart = [...prevCart];
                 updatedCart[existingProductIndex].quantity += 1; // Increase quantity
+                
                 return updatedCart;
             } else {
                 // Product doesn't exist in the cart, add it with quantity 1
