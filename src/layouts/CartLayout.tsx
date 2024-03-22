@@ -15,36 +15,36 @@ const CartLayout:Component = () => {
                     </button>
                 </div>
                 <div class="w-full bg-black text-white py-2 flex mt-5">
-                    <div class="w-1/6">
+                    <div class="w-1/6 px-2">
                         Image
                     </div>
-                    <div class="w-1/6">
+                    <div class="w-1/6 px-2">
                         Product
                     </div>
-                    <div class="w-1/6">
+                    <div class="w-1/6 px-2">
                         QTY
                     </div>
-                    <div class="w-1/6">
+                    <div class="w-1/6 px-2">
                         Price
                     </div>
-                    <div class="w-1/6">
+                    <div class="w-1/6 px-2">
                         Total
                     </div>
-                    <div class="w-1/6">
+                    <div class="w-1/6 px-2">
                         Action
                     </div>
                 </div>
                 <div class="w-full flex flex-col gap-3 mt-2 h-[50vh] overflow-y-auto">
                     <For each={cart()}>{
                         (i) => <div  class="w-full flex items-center bg-white">
-                            <div class="w-1/6">
+                            <div class="w-1/6 px-2">
                                 <img src={i.images[0]} alt={i.name} class="w-20"/>
                             </div>
-                            <div class="w-1/6">{i.name}</div>
-                            <div class="w-1/6">{i.quantity}</div>
-                            <div class="w-1/6">{i.price}</div>
-                            <div class="w-1/6">R {Number(i.price) * i.quantity }</div>
-                            <div class="w-1/6">
+                            <div class="w-1/6 px-2">{i.name}</div>
+                            <div class="w-1/6 px-2">{i.quantity}</div>
+                            <div class="w-1/6 px-2">{i.price}</div>
+                            <div class="w-1/6 px-2">R {Number(i.price) * i.quantity }</div>
+                            <div class="w-1/6 px-2">
                                 <button
                                     onclick={() => removeFromCart(i.id)} 
                                     class="text-gray-500 hover:text-red-500"
