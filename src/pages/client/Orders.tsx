@@ -11,7 +11,7 @@ const Orders:Component = () => {
 
     return (
         <>
-            <h1 class="text-xl">
+            <h1 class="text-xl font-semibold">
                 Orders
             </h1>
             {orderData().length > 0

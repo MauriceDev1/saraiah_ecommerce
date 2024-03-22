@@ -86,7 +86,7 @@ const Profile:Component = () => {
 
     return (
         <>
-            <h1 class="text-xl">
+            <h1 class="text-xl font-semibold">
                 Profile
             </h1>
             {loading()

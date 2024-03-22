@@ -3,7 +3,7 @@ import { Component } from "solid-js";
 const Notification:Component = () => {
     return (
         <>
-            <h1 class="text-xl">
+            <h1 class="text-xl font-semibold">
                 Notification
             </h1>
         </>

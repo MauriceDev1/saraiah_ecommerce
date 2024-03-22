@@ -37,7 +37,7 @@ const ProductsLayout: Component = () => {
                                 <For each={productsList()}>{
                                     (d) => 
                                         <a href={`/product/${d.id}`} class="w-1/2 lg:w-1/6">
-                                            <div class="w-full shadow bg-white border border-gray-300">
+                                            <div class="w-full hover:shadow bg-white border border-gray-300">
                                                 <div class="w-full bg-gray-200 h-56">
                                                     <img src={d.images[0]} alt={d.title} class="h-52 m-auto"/>
                                                 </div>

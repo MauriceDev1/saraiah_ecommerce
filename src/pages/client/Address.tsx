@@ -20,14 +20,14 @@ const Address:Component = () => {
 
     return (
         <>
-            <h1 class="text-xl">
+            <h1 class="text-xl font-semibold">
                 Address
             </h1>
             <div class="w-full flex mt-3">
                 <input
                     type="text"
                     name="address"
-                    class="w-full max-w-[450px] h-9 border border-black"
+                    class="w-full max-w-[450px] h-9 border border-gray-300"
                     onChange={handleAddress}
                     onInput={handleAddressError}
                 />
@@ -63,7 +63,7 @@ const Address:Component = () => {
                 :
                 <div class="w-full h-[60vh] flex">
                     <div class="m-auto">
-                        No address at moment
+                        No addresses listed at moment
                     </div>
                 </div>
             }
