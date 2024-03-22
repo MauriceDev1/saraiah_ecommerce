@@ -34,6 +34,7 @@ const ProductLayout:Component = () => {
         const docRef = await addDoc(collection(db, "whishlist"), {
             user_id: userId,
             product_id: productData().id,
+            name: productData().name,
             image: productData().images[0],
             created_at: Timestamp.now()
         });
@@ -49,11 +50,11 @@ const ProductLayout:Component = () => {
     }
 
     return (
-        <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
-            <div class="w-1/3">
+        <div class="w-11/12 m-auto pt-16 md:pt-32 flex md:gap-5 flex-wrap md:flex-nowrap py-10">
+            <div class="w-full md:w-1/3">
                 <img src={productData()?.images[0]} alt={productData()?.title} class="h-96" />
             </div>
-            <div class="w-1/3 flex flex-col gap-5">
+            <div class="w-full md:w-1/3 flex flex-col gap-5">
                 <h1 class="text-2xl font-bold">{productData()?.name}</h1>
                 <h3 class="text-lg font-medium">
                     {productData()?.summary}
@@ -67,6 +68,9 @@ const ProductLayout:Component = () => {
                 <div>
                     {productData()?.stock}
                 </div>
+                <div class="w-full border-b pb-2">
+                    Colours
+                </div>
                 <div class="flex gap-5">
                     <For each={productData()?.colors}>{
                         (c) => <div>
@@ -75,6 +79,9 @@ const ProductLayout:Component = () => {
                             </button>
                         </div>
                     }</For>
+                </div>
+                <div class="w-full border-b pb-2">
+                    Sizes
                 </div>
                 <div class="flex gap-5">
                     <For each={productData()?.sizes}>{
@@ -86,14 +93,14 @@ const ProductLayout:Component = () => {
                     }</For>
                 </div>
             </div>
-            <div class="w-1/3">
-                <div>
+            <div class="w-full md:w-1/3">
+                <div class="text-3xl pb-5">
                     R {productData()?.price}
                 </div>
                 <div class="flex items-center gap-5">
                     <button
                         onClick={addToShoppingCart} 
-                        class="bg-black h-10 text-white px-10"
+                        class="w-full bg-black h-10 text-white px-10"
                     >
                         Add to Cart
                     </button>

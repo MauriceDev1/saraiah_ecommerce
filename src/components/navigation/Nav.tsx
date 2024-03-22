@@ -8,6 +8,8 @@ import useLogout from "../../hooks/userLogout"
 import { useNavigate } from "@solidjs/router";
 import ShopLinks from "../../data/ShopLinks";
 import Links from "../../data/Links";
+import Ping from "../general/Ping";
+import { useCartContext } from "../../context/CartContext";
 
 const Nav: Component = () => {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ const Nav: Component = () => {
   const { logoutUser } = useLogout();
   const [profileMenu, setProfileMenu] = createSignal(false);
   const [shopMenu,setShopMenu] = createSignal(false);
+  const {cart} = useCartContext();
 
   const handleLogout = () => {
 	  logoutUser();
@@ -79,9 +82,12 @@ const Nav: Component = () => {
 				</button>
 				<button onClick={() => navigate('/cart')} class="relative">
 					<IoCartOutline class="text-2xl" />
-					<div class="w-4 h-4 absolute top-3 -right-1 rounded-full bg-red-500">
-
-					</div>
+					{cart().length > 0 
+						?
+							<Ping />
+						:
+							null 
+					}
 				</button>
 				{isAuth()
 					?

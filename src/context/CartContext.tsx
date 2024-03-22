@@ -20,6 +20,7 @@ interface CartContextProps {
     cart: Accessor<Product[]>;
     setCart: (value: Product[]) => void;
     addToCart: (product: Product) => void;
+    removeFromCart: (product: string) => void;
 }
 
 const CartContext = createContext<CartContextProps>();
@@ -44,6 +45,14 @@ export function CartContextProvider(props: any) {
         });
     };
 
+    const removeFromCart = (productId: string) => {
+        setCart(prevCart => {
+            // Filter out the product with the specified ID
+            const updatedCart = prevCart.filter(item => item.id !== productId);
+            return updatedCart;
+        });
+    };
+
     // Log the cart state whenever it changes
     createEffect(() => {
         cart()
@@ -51,7 +60,7 @@ export function CartContextProvider(props: any) {
     })
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart }}>
             {props.children}
         </CartContext.Provider>
     );

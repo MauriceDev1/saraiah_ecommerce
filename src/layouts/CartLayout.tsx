@@ -3,10 +3,7 @@ import { useCartContext } from "../context/CartContext";
 import { ImBin } from "solid-icons/im";
 
 const CartLayout:Component = () => {
-    const { cart } = useCartContext();
-
-    // Log the cart data to console
-    console.log("Cart:", cart());
+    const { cart, removeFromCart } = useCartContext();
 
     return (
         <div class="w-11/12 m-auto pt-28 flex gap-5">
@@ -37,7 +34,7 @@ const CartLayout:Component = () => {
                         Action
                     </div>
                 </div>
-                <div class="w-full flex flex-col gap-3 mt-2 bg-red-400 h-[50vh] overflow-y-auto">
+                <div class="w-full flex flex-col gap-3 mt-2 h-[50vh] overflow-y-auto">
                     <For each={cart()}>{
                         (i) => <div  class="w-full flex items-center bg-white">
                             <div class="w-1/6">
@@ -48,7 +45,10 @@ const CartLayout:Component = () => {
                             <div class="w-1/6">{i.price}</div>
                             <div class="w-1/6">R {Number(i.price) * i.quantity }</div>
                             <div class="w-1/6">
-                                <button class="text-gray-500 hover:text-red-500">
+                                <button
+                                    onclick={() => removeFromCart(i.id)} 
+                                    class="text-gray-500 hover:text-red-500"
+                                >
                                     <ImBin />
                                 </button>
                             </div>

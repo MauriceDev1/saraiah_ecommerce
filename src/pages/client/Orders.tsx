@@ -1,7 +1,7 @@
 import { Component, For, createSignal } from "solid-js";
 
 const Orders:Component = () => {
-    const [orderData,setOrderData] = createSignal<any[]>([{id:1}]);
+    const [orderData,setOrderData] = createSignal<any[]>([]);
 
     const handleOrderAddress = () => {
         const value = 5;
@@ -50,7 +50,7 @@ const Orders:Component = () => {
                 :
                     <div class="w-full h-[70vh] flex">
                         <div class="m-auto">
-                            No orders at current moment
+                            You currently have no orders at the moment
                         </div>
                     </div>
             }

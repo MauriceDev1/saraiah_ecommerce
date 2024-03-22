@@ -6,6 +6,7 @@ import { db } from "../firebase/config"
 
 const ProductsLayout: Component = () => {
     const [productsList,setProductsList] = createSignal<any[]>([]);
+    const [loading, setLoading] = createSignal(false);
     const {id} = useParams();
     createEffect(() => {
         getListOfProducts(id);
@@ -21,27 +22,33 @@ const ProductsLayout: Component = () => {
             
             setProductsList((prv) => [...prv,new_data]);
         });
+        setLoading(true);
     };
 
     return (
-        <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
-            <ProductMenu />
-            <div class="w-full flex flex-wrap -mt-2">
-
+        <div class="w-11/12 m-auto pt-16 lg:pt-32 flex gap-5 py-10">
+            {/* <ProductMenu /> */}
+            <div class="w-full flex flex-wrap">
+            
                 {productsList().length > 0 
                     ?
                         <For each={productsList()}>{
                             (d) => 
-                                <div class="w-1/4 p-2">
-                                    <a href={`/product/${d.id}`}>
+                                <a href={`/product/${d.id}`} class="w-full lg:w-1/6">
+                                    <div class="w-full shadow bg-white">
                                         <div class="w-full bg-gray-200">
                                             <img src={d.images[0]} alt={d.title}/>
                                         </div>
-                                    </a>
-                                    <h3 class="text-center">
-                                        {d.name}
-                                    </h3>
-                                </div>
+                                        <div class="px-2 pb-2">
+                                            <h3 class="text-center text-md pt-2 pb-1">
+                                                {d.name}
+                                            </h3>
+                                            <p class="text-sm text-center">
+                                                {d.summary}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
                         }</For>
                     :
                         <div class="w-full h-full flex">
