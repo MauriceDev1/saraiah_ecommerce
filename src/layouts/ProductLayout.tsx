@@ -72,6 +72,7 @@ const ProductLayout:Component = () => {
             }
             return;
         }
+        console.log(quantity);
         addToCart(productData());
         alert('product added to cart');
     }
