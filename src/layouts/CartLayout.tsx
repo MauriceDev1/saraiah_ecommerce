@@ -1,9 +1,15 @@
 import { Component, For } from "solid-js";
 import { useCartContext } from "../context/CartContext";
 import { ImBin } from "solid-icons/im";
+import { useNavigate } from "@solidjs/router";
 
 const CartLayout:Component = () => {
     const { cart, removeFromCart } = useCartContext();
+    const navigate = useNavigate();
+
+    const procceedToCheckout = () => {
+        navigate('/checkout');
+    }
 
     return (
         <div class="w-11/12 m-auto pt-28 flex gap-5">
@@ -54,6 +60,14 @@ const CartLayout:Component = () => {
                             </div>
                         </div>
                     }</For>
+                </div>
+                <div>
+                    <button
+                        onClick={procceedToCheckout} 
+                        class="bg-black h-9 px-5 text-white"
+                    >
+                        Checkout
+                    </button>
                 </div>
             </div>
         </div>
