@@ -82,7 +82,7 @@ const Nav: Component = () => {
 				</button>
 				<button onClick={() => navigate('/cart')} class="relative">
 					<IoCartOutline class="text-2xl" />
-					{cart().length > 0 
+					{cart().length > 0 && isAuth() 
 						?
 							<Ping />
 						:

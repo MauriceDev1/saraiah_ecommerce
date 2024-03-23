@@ -73,7 +73,6 @@ const ProductLayout:Component = () => {
             return;
         }
         const newDataObj = Object.assign(productData(),selectedData());
-        // console.log(newDataObj);
         addToCart(newDataObj);
         alert('product added to cart');
     }
@@ -90,12 +89,12 @@ const ProductLayout:Component = () => {
         <>
             {loading() 
                 ?
-                    <div class="w-10/12 m-auto pt-16 md:pt-32 flex md:gap-5 flex-wrap md:flex-nowrap py-10">
+                    <div class="w-full px-2 md:px-0 md:w-10/12 m-auto pt-16 md:pt-32 flex md:gap-5 flex-wrap md:flex-nowrap py-10">
                         <div class="w-full md:w-1/3 bg-gray-200 flex">
                             <img src={productData()?.images[0]} alt={productData()?.title} class="h-96 m-auto" />
                         </div>
-                        <div class="w-full md:w-1/3 flex flex-col gap-5">
-                            <h1 class="text-2xl font-bold">{productData()?.name}</h1>
+                        <div class="w-full px-5 md:px-0 md:w-1/3 flex flex-col gap-5">
+                            <h1 class="text-2xl font-bold underline">{productData()?.name}</h1>
                             <h3 class="text-lg font-medium">
                                 {productData()?.summary}
                             </h3>
@@ -145,7 +144,7 @@ const ProductLayout:Component = () => {
                                 {productData()?.stock}
                             </div>
                         </div>
-                        <div class="w-full md:w-1/3">
+                        <div class="w-full md:w-1/3 px-5 md:px-0">
                             <div class="text-2xl pb-3 flex justify-between">
                                 <p>
                                     Purchase

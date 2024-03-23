@@ -5,7 +5,7 @@ import { useNavigate } from "@solidjs/router";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "solid-icons/ai";
 
 const CartLayout:Component = () => {
-    const { cart, removeFromCart } = useCartContext();
+    const { cart, removeFromCart, updateCart } = useCartContext();
     const navigate = useNavigate();
 
     const procceedToCheckout = () => {
@@ -20,6 +20,18 @@ const CartLayout:Component = () => {
             return total;
         });
         return cartTotal;
+    }
+
+    const handelReduce = (e: string) => {
+        const productItem = cart().find((i) => i.id === e);
+        const itemQuantity = productItem?.quantity ? productItem.quantity - 1 : 0;
+        updateCart(e,itemQuantity);
+    }
+
+    const handelIncrease = (e: string) => {
+        const productItem = cart().find((i) => i.id === e);
+        const itemQuantity = productItem?.quantity ? productItem.quantity + 1 : 0;
+        updateCart(e,itemQuantity);
     }
 
     return (
@@ -61,13 +73,17 @@ const CartLayout:Component = () => {
                                 {i.size} {i.color}
                             </div>
                             <div class="w-1/5 px-2 flex">
-                                <button>
+                                <button
+                                    onclick={() => handelReduce(i.id)}
+                                >
                                     <AiOutlineMinusCircle />
                                 </button>
                                 <div class="w-1/3 text-center">
                                     {i.quantity}
                                 </div>
-                                <button>
+                                <button
+                                    onclick={() => handelIncrease(i.id)}
+                                >
                                     <AiOutlinePlusCircle />
                                 </button>
                             </div>

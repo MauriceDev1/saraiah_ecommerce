@@ -3,7 +3,8 @@ import { Component, For, createEffect, createSignal } from "solid-js";
 import { db } from "../../firebase/config";
 import cookie from "cookiejs";
 import LoadingScreen from "../../components/general/LoadingScreen";
-import { ImBin } from "solid-icons/im";
+import { ImBin, ImCart } from "solid-icons/im";
+import { IoCartOutline, IoTrashBin } from "solid-icons/io";
 
 const Whishlist:Component = () => {
     const [favouriteData, setFavouriteData] = createSignal<any[]>([]);
@@ -48,37 +49,49 @@ const Whishlist:Component = () => {
                                 ?
                                 <>
                                     <div class="w-full bg-black text-white py-2 flex mt-3">
-                                        <div class="w-1/4 px-2">
+                                        <div class="w-1/5 px-2">
                                             Image
                                         </div>
-                                        <div class="w-1/4 px-2">
+                                        <div class="w-1/5 px-2">
                                             Description
                                         </div>
-                                        <div class="w-1/4 px-2">
+                                        <div class="w-1/5 px-2">
+                                            QTY
+                                        </div>
+                                        <div class="w-1/5 px-2">
                                             Price
                                         </div>
-                                        <div class="w-1/4 px-2">
+                                        <div class="w-1/5 px-2">
                                             Action
                                         </div>
                                     </div>
-                                    <div class="w-full flex flex-col gap-2 py-2 overflow-y-scroll h-[63vh]">
+                                    <div class={`${favouriteData().length > 6 ? "overflow-y-scroll" : null } w-full flex flex-col gap-2 py-2 h-[63vh]`}>
                                         <For each={favouriteData()}>{
                                             (f) => 
                                                 <div class="flex bg-white items-center">
-                                                    <div class="w-1/4">
+                                                    <div class="w-1/5 px-2 py-1">
                                                         <img src={f.image} alt="whishlist item" class="h-16"/>
                                                     </div>
-                                                    <div class="w-1/4">
+                                                    <div class="w-1/5 px-2 py-1">
                                                             {f.name}
                                                     </div>
-                                                    <div class="w-1/4">
+                                                    <div class="w-1/5 px-2 py-1">
 
                                                     </div>
-                                                    <div class="w-1/4">
+                                                    <div class="w-1/5 px-2 py-1">
+                                                            {f.price}
+                                                    </div>
+                                                    <div class="w-1/5 px-2 py-1 flex gap-5 text-xl text-gray-600">
                                                         <button
+                                                            class="hover:text-red-600"
                                                             onClick={() => deleteItem(f.id)}
                                                         >
-                                                            <ImBin />
+                                                            <IoTrashBin />
+                                                        </button>
+                                                        <button
+                                                            class="hover:text-green-700"
+                                                        >
+                                                            <IoCartOutline />
                                                         </button>
                                                     </div>
                                                 </div>

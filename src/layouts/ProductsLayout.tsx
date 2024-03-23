@@ -27,7 +27,7 @@ const ProductsLayout: Component = () => {
     };
 
     return (
-        <div class="w-11/12 m-auto pt-16 lg:pt-32 flex gap-5 py-10">
+        <div class="w-full md:w-11/12 m-auto px-2 pt-16 lg:pt-32 flex gap-5 py-10 mb:pb-10">
             {loading() 
                 ?
                     <div class="w-full flex flex-wrap">

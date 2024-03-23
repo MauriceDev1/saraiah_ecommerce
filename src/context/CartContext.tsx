@@ -23,6 +23,7 @@ interface CartContextProps {
     setCart: (value: Product[]) => void;
     addToCart: (product: Product) => void;
     removeFromCart: (product: string) => void;
+    updateCart: (productId: string, quantity: number) => void;
 }
 
 const CartContext = createContext<CartContextProps>();
@@ -51,12 +52,29 @@ export function CartContextProvider(props: any) {
             return updatedCart;
         });
     };
+
+    const updateCart = (productId: string, quantity: number) => {
+        setCart(prevCart => {
+            const updatedCart = prevCart.map(item => {
+                if (item.id === productId) {
+                    return {
+                        ...item,
+                        quantity: quantity > 0 ? quantity : 0 
+                    };
+                }
+                return item;
+            });
+            return updatedCart;
+        });
+    };
+
+
     createEffect(() => {
         cart()
     })
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeFromCart, updateCart }}>
             {props.children}
         </CartContext.Provider>
     );
