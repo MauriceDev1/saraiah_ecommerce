@@ -36,7 +36,7 @@ const Nav: Component = () => {
   }
 
   return (
-    <nav class="w-full md:pt-10 fixed z-50">
+    <nav class="w-full md:pt-3 fixed z-50">
       <div class="w-full text-md md:w-11/12 m-auto relative border border-slate-300 flex bg-opacity-90 rounded-sm justify-between bg-customColor h-14 items-center px-5">
 
 			<ul class="lg:flex gap-10 hidden z-50">

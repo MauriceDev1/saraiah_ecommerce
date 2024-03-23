@@ -3,7 +3,6 @@ import { Component, For, createEffect, createSignal } from "solid-js";
 import { db } from "../../firebase/config";
 import cookie from "cookiejs";
 import LoadingScreen from "../../components/general/LoadingScreen";
-import { ImBin, ImCart } from "solid-icons/im";
 import { IoCartOutline, IoTrashBin } from "solid-icons/io";
 
 const Whishlist:Component = () => {
