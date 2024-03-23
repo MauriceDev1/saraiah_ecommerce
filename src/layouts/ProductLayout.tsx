@@ -17,6 +17,11 @@ const ProductLayout:Component = () => {
         size: '',
         quantity: 1,
     });
+    const [selectedDataError,setSelectedDataError] = createSignal({
+        color: '',
+        size: '',
+        quantity: 1,
+    });
     const {id} = useParams();
     const userId = cookie.get('userId');
 
@@ -64,32 +69,32 @@ const ProductLayout:Component = () => {
         } = selectedData();
         if(color === '' || size === ''){
             if(color === ''){
-
+                setSelectedDataError((prv) => ({...prv,color:'Please select a colour'}));
             }
             if(size === ''){
-
+                setSelectedDataError((prv) => ({...prv,size:'Please select a size'}));
             }
-            alert('need to select a color and size');
             return;
         }
         const newDataObj = Object.assign(productData(),selectedData());
         addToCart(newDataObj);
-        alert('product added to cart');
     }
 
     const selectColor = (e: string) => {
         setSelectedData((prv) => ({...prv,color:e}));
+        setSelectedDataError((prv) => ({...prv,color:''}));
     }
 
     const selectSize = (e: string) => {
         setSelectedData((prv) => ({...prv,size:e}));
+        setSelectedDataError((prv) => ({...prv,size:''}));
     }
 
     return (
         <>
             {loading() 
                 ?
-                    <div class="w-full px-2 md:px-0 md:w-10/12 m-auto pt-16 md:pt-32 flex md:gap-5 flex-wrap md:flex-nowrap py-10">
+                    <div class="w-full px-2 md:px-0 md:w-11/12 m-auto pt-16 md:pt-20 flex md:gap-5 flex-wrap md:flex-nowrap py-10">
                         <div class="w-full md:w-1/3 bg-gray-200 flex">
                             <img src={productData()?.images[0]} alt={productData()?.title} class="h-96 m-auto" />
                         </div>
@@ -102,13 +107,18 @@ const ProductLayout:Component = () => {
                                 {productData()?.details}
                             </p>
                             <div class="flex gap-4 items-center">
-                                <span class="bg-green-600 text-white px-3 py-1 rounded-full">
-                                    Gender: 
+                                <span class="bg-green-600 text-white text-sm px-3 py-1 rounded-full">
+                                    Gender
                                 </span>
                                 {productData()?.gender}
                             </div>
-                            <div class="w-full border-b pb-2 border-gray-300">
-                                Colours
+                            <div class="w-full border-b pb-2 border-gray-300 flex justify-between">
+                                <p>
+                                    Colours
+                                </p>
+                                <p class="text-red-500">
+                                    {selectedDataError().color !== '' ? selectedDataError().color : null}
+                                </p>
                             </div>
                             <div class="flex gap-2">
                                 <For each={productData()?.colors}>{
@@ -122,8 +132,13 @@ const ProductLayout:Component = () => {
                                     </div>
                                 }</For>
                             </div>
-                            <div class="w-full border-b pb-2 border-gray-300">
-                                Sizes
+                            <div class="w-full border-b pb-2 border-gray-300 flex justify-between">
+                                <p>
+                                    Sizes
+                                </p>
+                                <p class="text-red-500">
+                                    {selectedDataError().size !== '' ? selectedDataError().size : null}
+                                </p>
                             </div>
                             <div class="flex gap-2">
                                 <For each={productData()?.sizes}>{
@@ -138,8 +153,8 @@ const ProductLayout:Component = () => {
                                 }</For>
                             </div>
                             <div class="flex gap-4 items-center">
-                                <span class="bg-green-600 text-white px-3 py-1 rounded-full">
-                                    Stock Available: 
+                                <span class="bg-green-600 text-white text-sm px-3 py-1 rounded-full">
+                                    Stock Available
                                 </span>
                                 {productData()?.stock}
                             </div>

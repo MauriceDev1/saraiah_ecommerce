@@ -35,8 +35,8 @@ const CartLayout:Component = () => {
     }
 
     return (
-        <div class="w-11/12 m-auto pt-28 flex gap-5">
-            <div class="w-full relative md:w-2/3 m-auto p-5 h-[82vh] bg-customColor border border-gray-300 rounded-sm">
+        <div class="w-11/12 m-auto pt-20 flex gap-5">
+            <div class="w-full relative md:w-2/3 m-auto p-5 h-[87vh] bg-customColor border border-gray-300 rounded-sm">
                 <div class="w-full flex justify-between">
                     <h1 class="text-2xl font-semibold">Cart Items</h1>
                     <button class="bg-sky-500 hover:bg-sky-600 text-sm h-8 px-5 text-white rounded-sm">

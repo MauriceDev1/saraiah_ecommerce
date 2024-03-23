@@ -104,8 +104,8 @@ const CheckoutLayout:Component = () => {
         }
 
     return (   
-        <div class="w-11/12 m-auto pt-28 flex gap-5">
-            <div class="w-full lg:w-2/3 m-auto p-5 md:h-[82vh] bg-customColor border border-gray-300 rounded-sm">
+        <div class="w-11/12 m-auto pt-20 flex gap-5">
+            <div class="w-full lg:w-2/3 m-auto p-5 md:h-[87vh] bg-customColor border border-gray-300 rounded-sm">
                 <h1 class="text-2xl pb-3">Checkout</h1>
                 <div class="w-full flex md:gap-5 flex-wrap md:flex-nowrap">
                     <div class="w-full md:w-1/2 flex flex-col gap-1">
@@ -128,7 +128,7 @@ const CheckoutLayout:Component = () => {
                             }</For>
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2 flex flex-col gap-1 relative md:h-[73vh]">
+                    <div class="w-full md:w-1/2 flex flex-col gap-1 relative md:h-[77vh]">
                         <div>
                             <h3 class="text-lg">Location:</h3>
                         </div>

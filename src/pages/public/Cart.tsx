@@ -8,9 +8,7 @@ const Cart: Component = () => {
     const navigate = useNavigate();
     
     createEffect(() => {
-        // Check if the cart is empty
         if (cart().length === 0) {
-            // Redirect to another page, e.g., home page
             navigate('/');
         }
     });
