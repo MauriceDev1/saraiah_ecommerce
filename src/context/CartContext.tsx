@@ -11,8 +11,10 @@ interface Product {
     quantity: number;
     details: string;
     sizes: string[];
+    size: string;
     category: string;
     colors: string[];
+    color: string;
     gender: string;
 }
 
@@ -30,34 +32,27 @@ export function CartContextProvider(props: any) {
 
     const addToCart = (product: Product) => {
         setCart(prevCart => {
-            // Check if the product already exists in the cart
             const existingProductIndex = prevCart.findIndex(item => item.id === product.id);
 
             if (existingProductIndex !== -1) {
-                // Product already exists in the cart, update its quantity
                 const updatedCart = [...prevCart];
-                updatedCart[existingProductIndex].quantity += 1; // Increase quantity
+                updatedCart[existingProductIndex].quantity += 1; 
                 
                 return updatedCart;
             } else {
-                // Product doesn't exist in the cart, add it with quantity 1
-                return [...prevCart, { ...product, quantity: 1 }];
+                return [...prevCart, { ...product}];
             }
         });
     };
 
     const removeFromCart = (productId: string) => {
         setCart(prevCart => {
-            // Filter out the product with the specified ID
             const updatedCart = prevCart.filter(item => item.id !== productId);
             return updatedCart;
         });
     };
-
-    // Log the cart state whenever it changes
     createEffect(() => {
         cart()
-        console.log("Current cart:", cart());
     })
 
     return (

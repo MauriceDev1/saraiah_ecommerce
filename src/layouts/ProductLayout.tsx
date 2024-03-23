@@ -60,8 +60,7 @@ const ProductLayout:Component = () => {
     const addToShoppingCart = () => {
         let {
             color,
-            size,
-            quantity
+            size
         } = selectedData();
         if(color === '' || size === ''){
             if(color === ''){
@@ -70,11 +69,21 @@ const ProductLayout:Component = () => {
             if(size === ''){
 
             }
+            alert('need to select a color and size');
             return;
         }
-        console.log(quantity);
-        addToCart(productData());
+        const newDataObj = Object.assign(productData(),selectedData());
+        // console.log(newDataObj);
+        addToCart(newDataObj);
         alert('product added to cart');
+    }
+
+    const selectColor = (e: string) => {
+        setSelectedData((prv) => ({...prv,color:e}));
+    }
+
+    const selectSize = (e: string) => {
+        setSelectedData((prv) => ({...prv,size:e}));
     }
 
     return (
@@ -105,7 +114,10 @@ const ProductLayout:Component = () => {
                             <div class="flex gap-2">
                                 <For each={productData()?.colors}>{
                                     (c) => <div>
-                                        <button class="py-1 border border-gray-300 w-24">
+                                        <button
+                                            onclick={() => selectColor(c)} 
+                                            class={`${c === selectedData().color ? "bg-sky-600 text-white" : null } py-1 border border-gray-300 w-24`}
+                                        >
                                             {c}
                                         </button>
                                     </div>
@@ -117,7 +129,10 @@ const ProductLayout:Component = () => {
                             <div class="flex gap-2">
                                 <For each={productData()?.sizes}>{
                                     (s) => <div>
-                                        <button class="py-1 border border-gray-300 w-24">
+                                        <button
+                                            onClick={() => selectSize(s)} 
+                                            class={`${selectedData().size === s ? "bg-sky-600 text-white" : null} py-1 border border-gray-300 w-24`}
+                                        >
                                             {s}
                                         </button>
                                     </div>
@@ -136,7 +151,7 @@ const ProductLayout:Component = () => {
                                     Purchase
                                 </p>
                                 <h3>
-                                    R {Number(productData()?.price) * selectedData().quantity}
+                                    R {(Number(productData()?.price) * selectedData().quantity).toFixed(2)}
                                 </h3>
                             </div>
                             <div class="pb-6">

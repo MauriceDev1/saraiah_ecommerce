@@ -8,8 +8,7 @@ interface CarouselProps {
 }
 
 const Carousel: Component<CarouselProps> = (props) => {
-    const { shopLinks } = props; // Destructuring shopLinks from props
-    console.log(shopLinks);
+    const { shopLinks } = props; 
 
     const options = {
         loop: true,

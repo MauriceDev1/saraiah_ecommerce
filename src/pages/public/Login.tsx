@@ -103,7 +103,7 @@ const Login:Component = () => {
                             onChange={errorHandling}
                             class="w-full border h-10 rounded border-gray-300 px-2" 
                         />
-                        <button onClick={onSubmit} class="w-full my-5 bg-black text-white h-10 rounded">{loading() ? <div class="loader m-auto"></div> : 'Login'}</button>
+                        <button onClick={onSubmit} class="w-full my-5 bg-black text-white h-10 rounded">{loading() ? <div class="loaderSmall m-auto"></div> : 'Login'}</button>
                         <div class="flex justify-between">
                             <p>
                                 Register 

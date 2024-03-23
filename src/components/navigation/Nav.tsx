@@ -68,7 +68,7 @@ const Nav: Component = () => {
 			<div class="w-full absolute h-full flex justify-center left-0 top-0">
 				<div class="flex rounded-full justify-center -mt-3">
 					<a href="/">
-						<img src={Logo} alt="Mez haul logo" class="h-14 mt-[14px]"/>
+						<img src={Logo} alt="Mez haul logo" class="h-12 mt-[16px]"/>
 					</a>
 				</div>
         	</div>

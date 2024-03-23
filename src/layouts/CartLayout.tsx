@@ -13,51 +13,54 @@ const CartLayout:Component = () => {
     }
 
     const getTotal = () => {
-        let total = 0
-        cart().map((p) => {
-            let itemTota = Number(p.price) * p.quantity
-            total = itemTota + total
+        const cartTotal = cart().map((i) => {
+            let productPrice = Number(i.price);
+            let productQty = i.quantity;
+            let total = (productPrice * productQty).toFixed(2); 
+            return total;
         });
-        return total
+        return cartTotal;
     }
 
     return (
         <div class="w-11/12 m-auto pt-28 flex gap-5">
-            <div class="w-full md:w-2/3 m-auto p-5 h-[82vh] bg-customColor border border-gray-300 rounded-sm">
+            <div class="w-full relative md:w-2/3 m-auto p-5 h-[82vh] bg-customColor border border-gray-300 rounded-sm">
                 <div class="w-full flex justify-between">
                     <h1 class="text-2xl font-semibold">Cart Items</h1>
-                    <button class="bg-black h-9 px-5 text-white rounded-sm">
+                    <button class="bg-sky-500 hover:bg-sky-600 text-sm h-8 px-5 text-white rounded-sm">
                         Continue Shopping
                     </button>
                 </div>
                 <div class="w-full bg-black text-white py-2 flex mt-3">
-                    <div class="w-1/6 px-2">
+                    <div class="w-1/5 px-2">
                         Image
                     </div>
-                    <div class="w-1/6 px-2">
+                    <div class="w-1/5 px-2">
                         Description
                     </div>
-                    <div class="w-1/6 px-8">
+                    <div class="w-1/5 px-8">
                         QTY
                     </div>
-                    <div class="w-1/6 px-2">
-                        Price
-                    </div>
-                    <div class="w-1/6 px-2">
+                    <div class="w-1/5 px-2">
                         Total
                     </div>
-                    <div class="w-1/6 px-2">
+                    <div class="w-1/5 px-2">
                         Action
                     </div>
                 </div>
                 <div class="w-full flex flex-col gap-3 mt-2 h-[50vh] overflow-y-auto">
                     <For each={cart()}>{
                         (i) => <div  class="w-full flex items-center bg-white">
-                            <div class="w-1/6 px-2">
+                            <div class="w-1/5 px-2">
                                 <img src={i.images[0]} alt={i.name} class="w-14"/>
                             </div>
-                            <div class="w-1/6 px-2">{i.name}</div>
-                            <div class="w-1/6 px-2 flex">
+                            <div class="w-1/5 text-sm">
+                                <h4 class="font-semibold">
+                                    {i.name} 
+                                </h4>
+                                {i.size} {i.color}
+                            </div>
+                            <div class="w-1/5 px-2 flex">
                                 <button>
                                     <AiOutlineMinusCircle />
                                 </button>
@@ -68,9 +71,8 @@ const CartLayout:Component = () => {
                                     <AiOutlinePlusCircle />
                                 </button>
                             </div>
-                            <div class="w-1/6 px-2">{i.price}</div>
-                            <div class="w-1/6 px-2">R {Number(i.price) * i.quantity }</div>
-                            <div class="w-1/6 px-2">
+                            <div class="w-1/5 px-2">R {(Number(i.price) * i.quantity).toFixed(2)}</div>
+                            <div class="w-1/5 px-2">
                                 <button
                                     onclick={() => removeFromCart(i.id)} 
                                     class="text-gray-500 hover:text-red-500"
@@ -81,23 +83,25 @@ const CartLayout:Component = () => {
                         </div>
                     }</For>
                 </div>
-                <div class="w-full">
-                    <div class="w-full flex justify-end items-center">
-                        <div class="w-1/6 bg-white">
-                            <h3 class="text-lg py-2 px-3 border-l">
+                <div class="w-full absolute bottom-5 left-0">
+                    <div class="w-full flex justify-end items-center px-5">
+                        <div class="w-1/5 bg-white">
+                            <h3 class="text-lg py-1 px-3 border-l">
                                 Total
                             </h3>
                         </div>
-                        <div class="w-1/6 text-lg bg-white py-2">
+                        <div class="w-1/5 text-lg bg-white py-1">
                             {getTotal()}
                         </div>
+                        <div class="w-1/5">
+                            <button
+                                onClick={procceedToCheckout} 
+                                class="bg-black h-9 px-5 text-white w-full"
+                            >
+                                Checkout
+                            </button>
+                        </div>
                     </div>
-                    <button
-                        onClick={procceedToCheckout} 
-                        class="bg-black h-9 px-5 text-white"
-                    >
-                        Checkout
-                    </button>
                 </div>
             </div>
         </div>
