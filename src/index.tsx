@@ -33,6 +33,7 @@ import Toddlers from './pages/public/Toddlers'
 import Whishlist from './pages/client/Whishlist'
 import { CartContextProvider } from './context/CartContext'
 import Checkout from './pages/public/Checkout'
+import Success from './pages/public/Success'
 
 
 const root = document.getElementById('root')
@@ -54,7 +55,9 @@ render(() => (
 				<Route path="/login" component={Login} />
 				<Route path="/register" component={Register} />
 				<Route path="/cart" component={Cart} />
-				<Route path="/checkout" component={Checkout} />
+				<Route path="/cart" component={Cart} />
+				<Route path="checkout" component={Checkout} />
+				<Route path="/success" component={Success} />
 				<Route path="*" component={NotFound} />
 				<Route path="/" component={AdminLayout}>
 					<Route path="/profile" component={Profile} />

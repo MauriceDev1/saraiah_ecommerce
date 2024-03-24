@@ -4,7 +4,7 @@ import Logo from "../../assets/images/IMG_2282-removebg-preview.png"
 
 const Footer:Component = () => {
 	return (
-		<footer class="w-full bg-customColor py-16">
+		<footer class="w-full bg-customColor py-16 border-t border-black">
 			<div class="w-8/12 m-auto flex flex-wrap">
 				<div class="w-1/5">
 					<img src={Logo} alt="" class="w-28" />

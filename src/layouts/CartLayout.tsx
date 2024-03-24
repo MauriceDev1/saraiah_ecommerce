@@ -1,6 +1,6 @@
 import { Component, For } from "solid-js";
 import { useCartContext } from "../context/CartContext";
-import { ImBin } from "solid-icons/im";
+import { IoTrashBin } from "solid-icons/io";
 import { useNavigate } from "@solidjs/router";
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "solid-icons/ai";
 
@@ -36,10 +36,10 @@ const CartLayout:Component = () => {
 
     return (
         <div class="w-11/12 m-auto pt-20 flex gap-5">
-            <div class="w-full relative md:w-2/3 m-auto p-5 h-[87vh] bg-customColor border border-gray-300 rounded-sm">
+            <div class="w-full relative md:w-2/3 m-auto p-5 h-[87vh] bg-customColor border border-black rounded-sm">
                 <div class="w-full flex justify-between">
                     <h1 class="text-2xl font-semibold">Cart Items</h1>
-                    <button class="bg-sky-500 hover:bg-sky-600 text-sm h-8 px-5 text-white rounded-sm">
+                    <button class="bg-sky-500 border border-sky-600 hover:bg-sky-600 text-sm h-8 px-5 text-white rounded-sm">
                         Continue Shopping
                     </button>
                 </div>
@@ -62,7 +62,7 @@ const CartLayout:Component = () => {
                 </div>
                 <div class="w-full flex flex-col gap-3 mt-2 h-[50vh] overflow-y-auto">
                     <For each={cart()}>{
-                        (i) => <div  class="w-full flex items-center bg-white">
+                        (i) => <div  class="w-full flex items-center bg-white border border-black">
                             <div class="w-1/5 px-2">
                                 <img src={i.images[0]} alt={i.name} class="w-14"/>
                             </div>
@@ -93,26 +93,26 @@ const CartLayout:Component = () => {
                                     onclick={() => removeFromCart(i.id)} 
                                     class="text-gray-500 hover:text-red-500"
                                 >
-                                    <ImBin />
+                                    <IoTrashBin />
                                 </button>
                             </div>
                         </div>
                     }</For>
                 </div>
-                <div class="w-full absolute bottom-5 left-0">
-                    <div class="w-full flex justify-end items-center px-5">
-                        <div class="w-1/5 bg-white">
-                            <h3 class="text-lg py-1 px-3 border-l">
+                <div class="w-full absolute bottom-5 left-0 px-5">
+                    <div class="w-full flex justify-end items-center">
+                        <div class="w-1/5 bg-white  border-l border-b border-t border-black rounded-l-sm">
+                            <h3 class="py-1 px-3 border-l">
                                 Total
                             </h3>
                         </div>
-                        <div class="w-1/5 text-lg bg-white py-1">
+                        <div class="w-1/5 bg-white py-1 border-b border-t border-black">
                             R {getTotal()}
                         </div>
                         <div class="w-1/5">
                             <button
                                 onClick={procceedToCheckout} 
-                                class="bg-black h-9 px-5 text-white w-full"
+                                class="bg-black py-1 px-5 text-white w-full border border-black"
                             >
                                 Checkout
                             </button>

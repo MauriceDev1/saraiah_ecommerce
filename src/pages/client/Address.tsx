@@ -37,7 +37,7 @@ const Address:Component = () => {
                 <input
                     type="text"
                     name="address"
-                    class="w-full max-w-[450px] h-9 border border-gray-300"
+                    class="w-full max-w-[450px] h-9 border border-black"
                     onChange={handleAddress}
                     onInput={handleAddressError}
                 />

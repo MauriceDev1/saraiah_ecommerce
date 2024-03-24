@@ -38,7 +38,7 @@ const Nav: Component = () => {
 
   return (
     <nav class="w-full md:pt-3 fixed z-50">
-      <div class="w-full text-md md:w-11/12 m-auto relative border border-black flex bg-opacity-90 rounded-sm justify-between bg-customColor h-14 items-center pr-5">
+      <div class="w-full text-md md:w-11/12 m-auto relative border border-black flex rounded-sm justify-between bg-customColor h-14 items-center pr-5">
 
 			<ul class="lg:flex gap-1 hidden z-50">
           		<For each={Data}>{(l) => (
@@ -58,10 +58,10 @@ const Nav: Component = () => {
 									<p class="m-auto">
 										{l.title}
 									</p>
-									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-[15.8px] -left-16 absolute top-10`} onMouseLeave={closeShopMenu}>
+									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor border-r border-l border-b border-black z-10 mt-[15.8px] -left-16 absolute top-10`} onMouseLeave={closeShopMenu}>
 										<ul>
 											<For each={ShopLinks}>{
-												(s) => <button class="p-2 hover:bg-gray-300 w-full text-black" onclick={() => navigate(s.link)}>
+												(s) => <button class="p-2 hover:bg-slate-100 w-full text-black" onclick={() => navigate(s.link)}>
 													{s.title}
 												</button>
 											}</For>
