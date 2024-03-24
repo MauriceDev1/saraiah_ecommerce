@@ -5,7 +5,7 @@ import { HiOutlineBell, HiOutlineHeart } from "solid-icons/hi";
 import Logo from '../../assets/images/IMG_2282-removebg-preview.png'
 import { useAuthContext } from "../../context/AuthContext";
 import useLogout from "../../hooks/userLogout"
-import { useNavigate } from "@solidjs/router";
+import { useNavigate, useLocation } from "@solidjs/router";
 import ShopLinks from "../../data/ShopLinks";
 import Links from "../../data/Links";
 import Ping from "../general/Ping";
@@ -14,6 +14,7 @@ import { useCartContext } from "../../context/CartContext";
 const Nav: Component = () => {
   const navigate = useNavigate();
   const { isAuth } = useAuthContext();
+  const location = useLocation();
   const { logoutUser } = useLogout();
   const [profileMenu, setProfileMenu] = createSignal(false);
   const [shopMenu,setShopMenu] = createSignal(false);
@@ -37,19 +38,30 @@ const Nav: Component = () => {
 
   return (
     <nav class="w-full md:pt-3 fixed z-50">
-      <div class="w-full text-md md:w-11/12 m-auto relative border border-slate-300 flex bg-opacity-90 rounded-sm justify-between bg-customColor h-14 items-center px-5">
+      <div class="w-full text-md md:w-11/12 m-auto relative border border-black flex bg-opacity-90 rounded-sm justify-between bg-customColor h-14 items-center pr-5">
 
-			<ul class="lg:flex gap-10 hidden z-50">
+			<ul class="lg:flex gap-1 hidden z-50">
           		<For each={Data}>{(l) => (
 					<>
 						{l.link === '/shops'
 							?
-								<li class="relative cursor-pointer" onMouseEnter={toggleShopMenu}>
-									{l.title}
-									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-[15.8px] -left-20 absolute`} onMouseLeave={closeShopMenu}>
+								<li class={`
+									${location.pathname === '/shops' || 
+									location.pathname === '/children' || 
+									location.pathname === '/ladies' || 
+									location.pathname === '/men'
+										? 
+											'bg-black text-white' 
+										: 
+											''
+									} relative cursor-pointer flex h-14 w-28 duration-300 ease-in-out`} onMouseEnter={toggleShopMenu}>
+									<p class="m-auto">
+										{l.title}
+									</p>
+									<div class={`${shopMenu() ? 'flex' : 'hidden'} w-56 bg-customColor z-10 mt-[15.8px] -left-16 absolute top-10`} onMouseLeave={closeShopMenu}>
 										<ul>
 											<For each={ShopLinks}>{
-												(s) => <button class="p-2 hover:bg-gray-300 w-full" onclick={() => navigate(s.link)}>
+												(s) => <button class="p-2 hover:bg-gray-300 w-full text-black" onclick={() => navigate(s.link)}>
 													{s.title}
 												</button>
 											}</For>
@@ -58,7 +70,11 @@ const Nav: Component = () => {
 								</li>
 							:
 								<a href={l.link} onMouseEnter={closeShopMenu}>
-									<li>{l.title}</li>
+									<li class={`${location.pathname === l.link ? 'bg-black text-white' : ''} flex h-14 w-28 rounded-sm duration-300 ease-in-out`}>
+										<p class="m-auto">
+											{l.title}
+										</p>
+									</li>
 								</a>
 						}
 					</>
@@ -68,7 +84,7 @@ const Nav: Component = () => {
 			<div class="w-full absolute h-full flex justify-center left-0 top-0">
 				<div class="flex rounded-full justify-center -mt-3">
 					<a href="/">
-						<img src={Logo} alt="Mez haul logo" class="h-12 mt-[16px]"/>
+						<img src={Logo} alt="Mez haul logo" class="h-12 mt-[18px]"/>
 					</a>
 				</div>
         	</div>
