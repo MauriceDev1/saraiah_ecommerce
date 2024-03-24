@@ -1,6 +1,7 @@
 import { Component, For, createSignal, createEffect } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { useAuthContext } from "../../context/AuthContext";
+import { IoLocate } from "solid-icons/io";
 
 const Address:Component = () => {
     const {isAuth} = useAuthContext();
@@ -34,19 +35,23 @@ const Address:Component = () => {
                 Address
             </h1>
             <div class="w-full flex mt-3">
-                <input
-                    type="text"
-                    name="address"
-                    class="w-full max-w-[450px] h-9 border border-black"
-                    onChange={handleAddress}
-                    onInput={handleAddressError}
-                />
-                <button
-                    onClick={addAddress}
-                    class="w-24 text-sm bg-black text-white"
-                >
-                    Add
-                </button>
+                <div class="relative w-full h-9 items-center flex">
+                    <input
+                        type="text"
+                        name="address"
+                        class="w-full max-w-[450px] h-9 border border-black px-8 rounded-l-sm"
+                        placeholder="Enter address"
+                        onChange={handleAddress}
+                        onInput={handleAddressError}
+                    />
+                    <IoLocate class="absolute top-3 left-3" />
+                    <button
+                        onClick={addAddress}
+                        class="w-24 text-sm bg-black text-white h-9 rounded-r-sm"
+                    >
+                        Add
+                    </button>
+                </div>
             </div>
             {addresses().length > 0
                 ?

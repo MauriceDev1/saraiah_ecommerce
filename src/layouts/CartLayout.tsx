@@ -101,18 +101,20 @@ const CartLayout:Component = () => {
                 </div>
                 <div class="w-full absolute bottom-5 left-0 px-5">
                     <div class="w-full flex justify-end items-center">
-                        <div class="w-1/5 bg-white  border-l border-b border-t border-black rounded-l-sm">
-                            <h3 class="py-1 px-3 border-l">
+                        <div class="w-1/5 bg-white h-10 flex  border-l border-b border-t border-black rounded-l-sm">
+                            <h3 class="py-1 px-3 border-l my-auto">
                                 Total
                             </h3>
                         </div>
-                        <div class="w-1/5 bg-white py-1 border-b border-t border-black">
-                            R {getTotal()}
+                        <div class="w-1/5 bg-white h-10 flex border-b border-t border-black">
+                            <h3 class="my-auto">
+                                R {getTotal()}
+                            </h3>
                         </div>
                         <div class="w-1/5">
                             <button
                                 onClick={procceedToCheckout} 
-                                class="bg-black py-1 px-5 text-white w-full border border-black"
+                                class="bg-black h-10 px-5 text-white w-full border border-black"
                             >
                                 Checkout
                             </button>
