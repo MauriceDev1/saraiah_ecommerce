@@ -107,7 +107,7 @@ const CartLayout:Component = () => {
                             </h3>
                         </div>
                         <div class="w-1/5 text-lg bg-white py-1">
-                            {getTotal()}
+                            R {getTotal()}
                         </div>
                         <div class="w-1/5">
                             <button

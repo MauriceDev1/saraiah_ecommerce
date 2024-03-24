@@ -4,11 +4,21 @@ import { db } from "../../firebase/config";
 import cookie from "cookiejs";
 import LoadingScreen from "../../components/general/LoadingScreen";
 import { IoCartOutline, IoTrashBin } from "solid-icons/io";
+import { useNavigate } from "@solidjs/router";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Whishlist:Component = () => {
+    const {isAuth} = useAuthContext();
     const [favouriteData, setFavouriteData] = createSignal<any[]>([]);
     const [ loading, setLoadin] = createSignal(false);
     const userId = cookie.get('userId');
+    const navigate = useNavigate();
+    
+    createEffect(() => {
+        if (!isAuth()) {
+            navigate('/');
+        }
+    });
 
     createEffect(() => {
         getAllUserWhistlistItems(userId);

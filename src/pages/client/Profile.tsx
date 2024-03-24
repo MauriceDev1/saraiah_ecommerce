@@ -3,6 +3,8 @@ import cookie from "cookiejs";
 import { Timestamp, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import LoadingScreen from "../../components/general/LoadingScreen";
+import { useNavigate } from "@solidjs/router";
+import { useAuthContext } from "../../context/AuthContext"
 
 const Profile:Component = () => {
     const [ loading, setLoading ] = createSignal(false);
@@ -12,12 +14,21 @@ const Profile:Component = () => {
         email: '',
         cellphone: ''
     });
+    const {isAuth} = useAuthContext();
     
     const [ userDataError, setUserDataError ] = createSignal({
         name: '', 
         surname: '',
         email: '',
         cellphone: ''
+    });
+
+    const navigate = useNavigate();
+    
+    createEffect(() => {
+        if (!isAuth()) {
+            navigate('/');
+        }
     });
 
     const userId = cookie.get('userId');

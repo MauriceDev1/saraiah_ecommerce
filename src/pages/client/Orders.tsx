@@ -1,6 +1,9 @@
-import { Component, For, createSignal } from "solid-js";
+import { Component, For, createSignal, createEffect } from "solid-js";
+import { useNavigate } from "@solidjs/router";
+import { useAuthContext } from "../../context/AuthContext"
 
 const Orders:Component = () => {
+    const {isAuth} = useAuthContext();
     const [orderData,setOrderData] = createSignal<any[]>([]);
 
     const handleOrderAddress = () => {
@@ -8,6 +11,14 @@ const Orders:Component = () => {
         alert('remove favourite');
         setOrderData((prv) => ({...prv,value}))
     }
+
+    const navigate = useNavigate();
+    
+    createEffect(() => {
+        if (!isAuth()) {
+            navigate('/');
+        }
+    });
 
     return (
         <>

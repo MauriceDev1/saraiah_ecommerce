@@ -1,8 +1,18 @@
-import { Component, For, createSignal } from "solid-js";
+import { Component, For, createSignal, createEffect } from "solid-js";
+import { useNavigate } from "@solidjs/router";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Address:Component = () => {
+    const {isAuth} = useAuthContext();
     const [address,setAddress] = createSignal<string>();
     const [addresses,setAddresses] = createSignal<any[]>([]);
+    const navigate = useNavigate();
+    
+    createEffect(() => {
+        if (!isAuth()) {
+            navigate('/');
+        }
+    });
 
     const handleAddress = (e: any) => {
         const {value} = e.currentTarget;

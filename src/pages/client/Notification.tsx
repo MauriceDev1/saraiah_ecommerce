@@ -3,11 +3,22 @@ import { Component, createSignal, createEffect, For } from "solid-js";
 import { db } from "../../firebase/config";
 import LoadingScreen from "../../components/general/LoadingScreen";
 import cookie from "cookiejs"
+import { useNavigate } from "@solidjs/router";
+import { useAuthContext } from "../../context/AuthContext"
 
 const Notification:Component = () => {
+    const {isAuth} = useAuthContext();
     const [loading,setLoading] = createSignal<boolean>(false);
     const [listOfNotifications,setListOfNotifications] = createSignal<any[]>([]);
     const userId = cookie.get('userId');
+
+    const navigate = useNavigate();
+    
+    createEffect(() => {
+        if (!isAuth()) {
+            navigate('/');
+        }
+    });
     
     createEffect(() => {
         getUserListNotifications(userId)

@@ -2,7 +2,7 @@ import { Component } from "solid-js";
 
 const ContactLayout:Component = () => {
     return (
-        <div class="w-11/12 m-auto pt-32 flex gap-5 py-10">
+        <div class="w-11/12 m-auto pt-20 flex gap-5 py-10">
             <div class="w-1/2 m-auto">
                 <h1 class="text-3xl pb-5">Contact Form</h1>
                 <div class="text-md flex flex-col gap-3">

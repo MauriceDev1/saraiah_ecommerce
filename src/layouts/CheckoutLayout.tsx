@@ -10,14 +10,14 @@ const CheckoutLayout:Component = () => {
     const {cart} = useCartContext();
     const [locationList,setLocationList] = createSignal<any[]>([]);
     const userId = cookie.get('userId');
-    const [checkOutData,setChexkOutData] = createSignal({
+    const [checkOutData,setCheckOutData] = createSignal({
       location: '',
       recipientName: '',
       primaryContact: '',
       alternativeContact: '',
       instructions: '',
     });
-    const [checkOutDataError,setChexkOutDataError] = createSignal({
+    const [checkOutDataError,setCheckOutDataError] = createSignal({
         location: '',
         recipientName: '',
         primaryContact: '',
@@ -34,7 +34,6 @@ const CheckoutLayout:Component = () => {
 
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
             const doc_id = {"id": doc.id}
             const doc_data = doc.data();
             const new_data = Object.assign(doc_id,doc_data);
@@ -44,19 +43,19 @@ const CheckoutLayout:Component = () => {
 
     const handleCheckoutData = (e: any) => {
         const { name, value } = e.currentTarget; 
-        setChexkOutData((prv) => ({...prv,[name]:value}));
+        setCheckOutData((prv) => ({...prv,[name]:value}));
     }
 
     const handleCheckoutDataError = (e: any) => {
         const { name } = e.currentTarget;
-        setChexkOutDataError((prv) => ({...prv,[name]:e}));
+        setCheckOutDataError((prv) => ({...prv,[name]:e}));
     }
 
     const getCartTotal = () => {
         const Total = cart().map((i) => {
             const price = Number(i.price);
             const qty = i.quantity;
-            const total = (price * qty).toFixed(2);
+            const total = Number((price * qty).toFixed(2)); 
             return total;
         });
         return Total
@@ -72,13 +71,13 @@ const CheckoutLayout:Component = () => {
         } = checkOutData();
         if(location === '' || recipientName === '' || primaryContact === ''){
             if(location === ''){
-                setChexkOutDataError((prv) => ({...prv,location:'Location is a manditory field!'}));
+                setCheckOutDataError((prv) => ({...prv,location:'Location is a manditory field!'}));
             }
             if(recipientName === ''){
-                setChexkOutDataError((prv) => ({...prv,recipientName:'Recipient name is a manditory field!'}));
+                setCheckOutDataError((prv) => ({...prv,recipientName:'Recipient name is a manditory field!'}));
             }
             if(primaryContact === ''){
-                setChexkOutDataError((prv) => ({...prv,recipientName:'Recipient name is a manditory field!'}));
+                setCheckOutDataError((prv) => ({...prv,recipientName:'Recipient name is a manditory field!'}));
             }
             return
         }
@@ -96,12 +95,25 @@ const CheckoutLayout:Component = () => {
         myHeaders.append("Cookie", "_cfuvid=1aMoFz97R9EMjGyNE0eD4Sv_mAu6vhyZ5FPAOtiWq1E-1711210951779-0.0.1.1-604800000");
 
         const raw = JSON.stringify({
-        "amount": getCartTotal(),
-        "currency": "ZAR"
+            "amount": getCartTotal(),
+            "currency": "ZAR"
         });
 
-        console.log(raw);
-        }
+        const requestOptions:RequestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: "follow"
+        };
+
+        fetch("http://localhost:3000/api/payment", requestOptions)
+        .then((response) => response.text())
+        .then((result) => {
+            const data = JSON.parse(result);
+            window.open(data.redirectUrl, '_blank');
+        })
+        .catch((error) => console.error(error));
+    }
 
     return (   
         <div class="w-11/12 m-auto pt-20 flex gap-5">
@@ -122,7 +134,7 @@ const CheckoutLayout:Component = () => {
                                         {i.name}
                                     </div>
                                     <div class="w-1/3 flex justify-center">
-                                        R {Number(i.price) * i.quantity}
+                                        R {(Number(i.price) * i.quantity).toFixed(2)}
                                     </div>
                                 </div>
                             }</For>
@@ -147,12 +159,12 @@ const CheckoutLayout:Component = () => {
                                     <input 
                                         type="text" 
                                         name="location"
-                                        onChange={(e) => handleCheckoutData(e)}
-                                        onInput={(e) => handleCheckoutDataError(e)}
-                                        placeholder="Enter location"
-                                        class="w-full max-w-[450px] h-10 border border-gray-300 px-8"
+                                        onInput={(e) => handleCheckoutData(e)}
+                                        onChange={(e) => handleCheckoutDataError(e)}
+                                        placeholder={checkOutDataError().location ? checkOutDataError().location :"Enter location"}
+                                        class={`${checkOutDataError().location ? "border border-red-400 placeholder:text-red-500 bg-red-50" : "border border-gray-300" } w-full max-w-[450px] h-10 text-sm px-8`}
                                     />
-                                    <IoLocate class="absolute top-3 left-3 text-gray-500" />
+                                    <IoLocate class={`${checkOutDataError().location ? " text-red-500" : " text-gray-500"} absolute top-3 left-3`} />
                                 </div>
                         }
                         <div>
